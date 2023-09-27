@@ -1,0 +1,20 @@
+version: '3.4'
+
+services:
+  providingmusic.api:
+    image: ${DOCKER_REGISTRY-}providingmusicapi
+    build:
+      context: .
+      dockerfile: ProvidingMusic.API\Dockerfile
+      
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: 12345678
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
