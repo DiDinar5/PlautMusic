@@ -1,6 +1,11 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using ProvidingMusic.API.Controllers;
+using ProvidingMusic.BusinessLogic.Services;
+using ProvidingMusic.BusinessLogic.Services.Intefaces;
 using ProvidingMusic.Database.Context;
+using ProvidingMusic.Database.IRepositories;
+using ProvidingMusic.Database.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +20,18 @@ builder.Services.AddDbContext<ApplicationDBContext>(opt=>
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+
+builder.Services.AddScoped<IGroupMusicRepository, GroupMusicRepository>();
+builder.Services.AddScoped<ISongRepository, SongRepository>();
+builder.Services.AddScoped<IAlbumRepository,  AlbumRepository>();
+builder.Services.AddScoped<IGroupMemberRepository,GroupMemberRepository>();
+
+builder.Services.AddScoped<IGroupMusicBLL, GroupMusicBLL>();
+builder.Services.AddScoped<ISongBLL,SongBLL>();
+builder.Services.AddScoped<IAlbumBLL,AlbumBLL>();
+builder.Services.AddScoped<IGroupMemberBLL,GroupMemberBLL>();
+
 
 var app = builder.Build();
 

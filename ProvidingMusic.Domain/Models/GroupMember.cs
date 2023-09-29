@@ -12,14 +12,19 @@ namespace ProvidingMusic.Domain.Models
     {
         [Required]
         public Guid Id { get; set; }
+
         [Required]
         public string FirstName { get; set; }
+
         [Required]
         public string LastName { get; set; }
+
         [Required]
         public string Nickname { get; set; }
+
         [Required]
         public int Age { get; set; }
+
         [Required]
         public string Awards { get; set; }
     }

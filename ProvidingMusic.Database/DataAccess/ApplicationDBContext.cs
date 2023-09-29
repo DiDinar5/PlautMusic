@@ -16,11 +16,14 @@ namespace ProvidingMusic.Database.Context
         //}
         public ApplicationDBContext(DbContextOptions<ApplicationDBContext> options): base(options)
         {
-                //Database.Migrations??
+
         }
         public DbSet<GroupMember> GroupMembers { get; set; }
-        public DbSet<GroupMusic> MusicGroups { get; set; }
+        public DbSet<GroupMusic> GroupsMusic { get; set; }
         public DbSet<Song> Songs { get; set; }
         public DbSet<Album> Albums { get; set; }
+        
+        
+        //OnConfigure
     }
 }

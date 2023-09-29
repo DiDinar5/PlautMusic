@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProvidingMusic.Database.MusicGroup
 {
-    public class GroupDTO
+    public class GroupMusicDTO
     {
     }
 }
