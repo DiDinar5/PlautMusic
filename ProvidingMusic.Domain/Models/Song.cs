@@ -12,6 +12,15 @@ namespace ProvidingMusic.Domain.Models
         public int Id { get; set; }
 
         [Required]
-        public string? Name { get; set; }
+        public string Name { get; set; }
+
+        [Required]
+        public string Performers { get; set; }
+
+        [Required]
+        public double SongDuration { get; set; }
+
+        [Range(0,10)]
+        public int WorldRating { get; set; }
     }
 }

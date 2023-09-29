@@ -20,9 +20,9 @@ namespace ProvidingMusic.BusinessLogic.Services
         {
             return await _songRepository.GetSongsFromDbAsync();
         }
-        public async Task<Song> GetSongByIdConnection(int id)
+        public async Task<Song> GetSongByIdConnection(string name)
         {
-            return await _songRepository.GetSongByIdFromDbAsync(id);
+            return await _songRepository.GetSongByIdFromDbAsync(name);
         }
 
 

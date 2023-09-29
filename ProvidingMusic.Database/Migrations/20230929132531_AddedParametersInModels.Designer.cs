@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using ProvidingMusic.Database.Context;
@@ -11,9 +12,11 @@ using ProvidingMusic.Database.Context;
 namespace ProvidingMusic.Database.Data.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    partial class ApplicationDBContextModelSnapshot : ModelSnapshot
+    [Migration("20230929132531_AddedParametersInModels")]
+    partial class AddedParametersInModels
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -30,10 +33,6 @@ namespace ProvidingMusic.Database.Data.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Awards")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.Property<DateTime>("DateCreate")
                         .HasColumnType("timestamp with time zone");
 
@@ -41,7 +40,7 @@ namespace ProvidingMusic.Database.Data.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("WorldRating")
+                    b.Property<int>("Rating")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
@@ -90,14 +89,11 @@ namespace ProvidingMusic.Database.Data.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<DateTime>("DateOfFoundation")
-                        .HasColumnType("timestamp with time zone");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("WorldRating")
+                    b.Property<int>("Rating")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
@@ -116,16 +112,6 @@ namespace ProvidingMusic.Database.Data.Migrations
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
-
-                    b.Property<string>("Performers")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<double>("SongDuration")
-                        .HasColumnType("double precision");
-
-                    b.Property<int>("WorldRating")
-                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 

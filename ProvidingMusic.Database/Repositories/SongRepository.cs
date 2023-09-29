@@ -21,7 +21,7 @@ namespace ProvidingMusic.Database.Repositories
         public async Task<IEnumerable<Song>> GetSongsFromDbAsync()=>
             await _dbContext.Songs.OrderBy(x=>x.Name).ToListAsync();
 
-        public async Task<Song> GetSongByIdFromDbAsync(int id)=>
-            await _dbContext.Songs.FindAsync(id);
+        public async Task<Song> GetSongByIdFromDbAsync(string name)=>
+            await _dbContext.Songs.Where(x=>x.Name==name).FirstOrDefaultAsync();
     }
 }

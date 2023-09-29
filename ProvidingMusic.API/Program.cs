@@ -20,7 +20,7 @@ builder.Services.AddDbContext<ApplicationDBContext>(opt=>
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
+//FluentAPI
 
 builder.Services.AddScoped<IGroupMusicRepository, GroupMusicRepository>();
 builder.Services.AddScoped<ISongRepository, SongRepository>();

@@ -10,6 +10,6 @@ namespace ProvidingMusic.BusinessLogic.Services.Intefaces
     public interface ISongBLL
     {
         Task<IEnumerable<Song>> GetSongsConnection();
-        Task<Song> GetSongByIdConnection(int id);
+        Task<Song> GetSongByIdConnection(string name);
     }
 }

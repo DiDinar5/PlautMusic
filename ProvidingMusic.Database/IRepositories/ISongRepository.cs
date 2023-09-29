@@ -10,6 +10,6 @@ namespace ProvidingMusic.Database.IRepositories
     public interface ISongRepository
     {
         Task<IEnumerable<Song>> GetSongsFromDbAsync();
-        Task<Song> GetSongByIdFromDbAsync(int id);
+        Task<Song> GetSongByIdFromDbAsync(string name);
     }
 }

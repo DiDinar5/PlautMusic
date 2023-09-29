@@ -23,9 +23,10 @@ namespace ProvidingMusic.Domain.Models
         public string Nickname { get; set; }
 
         [Required]
-        public int Age { get; set; }
+        public DateTime DateOfBirth { get; set; }
 
         [Required]
-        public string Awards { get; set; }
+        public DateTime DateOfDeath { get; set;}
+
     }
 }

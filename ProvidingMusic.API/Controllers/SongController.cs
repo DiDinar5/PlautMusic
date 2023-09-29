@@ -17,11 +17,11 @@ namespace ProvidingMusic.API.Controllers
         {
             return Ok(await _songBLL.GetSongsConnection());
         }
-
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetSong(int id)
+        //Random
+        [HttpGet("{name}")]
+        public async Task<IActionResult> GetSong(string name)
         {
-            return Ok(await _songBLL.GetSongByIdConnection(id));
+            return Ok(await _songBLL.GetSongByIdConnection(name));
         }
     }
 }

@@ -21,6 +21,6 @@ namespace ProvidingMusic.Database.Repositories
             await _dbContext.GroupMembers.OrderBy(x=>x.FirstName).ToListAsync();
 
         public async Task<GroupMember> GetGroupMemberByIdFromDbAsync(string nickname) =>
-            await _dbContext.GroupMembers.Where(x=>x.Nickname==nickname).FirstAsync();
+            await _dbContext.GroupMembers.Where(x=>x.Nickname==nickname).FirstAsync();//wrong
     }
 }
