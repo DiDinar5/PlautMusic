@@ -9,7 +9,7 @@ namespace ProvidingMusic.Database.IRepositories
 {
     public interface IAlbumRepository
     {
-        Task<IEnumerable<Album>> GetAlbumFromDbAsync();
+        Task<IEnumerable<Album>> GetAlbumsFromDbAsync();
         Task<Album> GetAlbumByIdFromDbAsync(int id);   
     }
 }

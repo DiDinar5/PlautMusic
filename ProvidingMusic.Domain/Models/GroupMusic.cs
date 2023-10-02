@@ -16,7 +16,7 @@ namespace ProvidingMusic.Domain.Models
         public DateTime DateOfFoundation { get; set; }
 
         [Required]
-        public string Awards { get; set; }   
+        public string Awards { get; set; }   //Array
     }
 }
 //FluentAPI

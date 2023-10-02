@@ -18,7 +18,7 @@ namespace ProvidingMusic.BusinessLogic.Services
         }
         public async Task<IEnumerable<Album>> GetAlbumsConnection()
         {
-            return await _albumRepository.GetAlbumFromDbAsync();   
+            return await _albumRepository.GetAlbumsFromDbAsync();   
         }
         public async Task<Album> GetAlbumByIdConnection(int id)
         {

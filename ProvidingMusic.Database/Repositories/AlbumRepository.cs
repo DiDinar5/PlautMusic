@@ -17,7 +17,7 @@ namespace ProvidingMusic.Database.Repositories
         {
                 _dbContext = dBContext;
         }
-        public async Task<IEnumerable<Album>> GetAlbumFromDbAsync()=>
+        public async Task<IEnumerable<Album>> GetAlbumsFromDbAsync()=>
             await _dbContext.Albums.OrderBy(x=>x.Name).ToListAsync();
         
         public async Task<Album> GetAlbumByIdFromDbAsync(int id)=>

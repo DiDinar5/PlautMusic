@@ -7,7 +7,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace ProvidingMusic.Database.Repositories
 {
@@ -20,8 +22,15 @@ namespace ProvidingMusic.Database.Repositories
         }
         public async Task<IEnumerable<Song>> GetSongsFromDbAsync()=>
             await _dbContext.Songs.OrderBy(x=>x.Name).ToListAsync();
-
-        public async Task<Song> GetSongByIdFromDbAsync(string name)=>
-            await _dbContext.Songs.Where(x=>x.Name==name).FirstOrDefaultAsync();
+        public async Task<Song?> GetSongRandomFromDbAsync()
+        {
+            Random random = new Random();
+            var randomIndex = random.Next(0, _dbContext.Songs.Count());
+            return await _dbContext.Songs.FirstOrDefaultAsync(x=>x.Id==randomIndex);
+        }
+        public async Task<Song> GetSongByIdFromDbAsync(string song)//изменить имя метода на имя на айди
+        {
+            return await _dbContext.Songs.FirstAsync(x => EF.Functions.Like(x.Name.ToLower(), $"%{song}%"));
+        }
     }
 }

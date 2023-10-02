@@ -20,11 +20,16 @@ namespace ProvidingMusic.BusinessLogic.Services
         {
             return await _songRepository.GetSongsFromDbAsync();
         }
+
+        public async Task<Song> GetSongRandomConnection()
+        {
+            //try catch
+            return await _songRepository.GetSongRandomFromDbAsync();
+        }
         public async Task<Song> GetSongByIdConnection(string name)
         {
             return await _songRepository.GetSongByIdFromDbAsync(name);
         }
-
 
     }
 }

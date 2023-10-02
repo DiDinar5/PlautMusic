@@ -23,7 +23,6 @@ namespace ProvidingMusic.API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetMusicGroups()
         {
-
             //валидация
 
             //EFfunctionsLike

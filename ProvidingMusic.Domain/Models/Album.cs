@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace ProvidingMusic.Domain.Models
 {
@@ -22,6 +17,6 @@ namespace ProvidingMusic.Domain.Models
         public int WorldRating { get; set; }
 
         [Required]
-        public string Awards { get; set; }
+        public string Awards { get; set; } //Array
     }
 }
