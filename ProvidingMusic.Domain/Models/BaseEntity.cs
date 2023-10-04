@@ -7,15 +7,11 @@ using System.Threading.Tasks;
 
 namespace ProvidingMusic.Domain.Models
 {
-    public class Song: BaseEntity
+    public class BaseEntity
     {
-        [Required]
-        public string Performers { get; set; }
+        public int Id { get; set; }
 
         [Required]
-        public double SongDuration { get; set; }
-
-        [Range(0,10)]
-        public int WorldRating { get; set; }
+        public string Name { get; set; }
     }
 }

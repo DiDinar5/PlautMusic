@@ -8,11 +8,8 @@ using System.Threading.Tasks;
 
 namespace ProvidingMusic.Domain.Models
 {
-    public class GroupMember
+    public class GroupMember : BaseEntity
     {
-        [Required]
-        public Guid Id { get; set; }
-
         [Required]
         public string FirstName { get; set; }
 

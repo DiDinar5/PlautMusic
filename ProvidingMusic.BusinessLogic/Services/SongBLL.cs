@@ -16,9 +16,15 @@ namespace ProvidingMusic.BusinessLogic.Services
         {
             _songRepository = songRepository;
         }
-        public async Task<IEnumerable<Song>> GetSongsConnection()
+
+        public Task<IEnumerable<Album>> GetAllConnection()
         {
-            return await _songRepository.GetSongsFromDbAsync();
+            return _songRepository.GetAllAsync();
+        }
+
+        public Task<Album> GetByIdConnection(int id)
+        {
+            throw new NotImplementedException();
         }
 
         public async Task<Song> GetSongRandomConnection()
@@ -26,10 +32,5 @@ namespace ProvidingMusic.BusinessLogic.Services
             //try catch
             return await _songRepository.GetSongRandomFromDbAsync();
         }
-        public async Task<Song> GetSongByIdConnection(string name)
-        {
-            return await _songRepository.GetSongByIdFromDbAsync(name);
-        }
-
     }
 }

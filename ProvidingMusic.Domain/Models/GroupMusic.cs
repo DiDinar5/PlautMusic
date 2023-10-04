@@ -2,14 +2,9 @@
 
 namespace ProvidingMusic.Domain.Models
 {
-    public class GroupMusic
+    public class GroupMusic : BaseEntity
     {
-        public int Id { get; set; }
-
-        [Required]
-        public string Name { get; set; }
-
-        [Range(0,10)]
+        [Range(0, 10)]
         public int WorldRating { get; set; }
 
         [Required]

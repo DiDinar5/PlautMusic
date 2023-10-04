@@ -26,6 +26,7 @@ builder.Services.AddScoped<IGroupMusicRepository, GroupMusicRepository>();
 builder.Services.AddScoped<ISongRepository, SongRepository>();
 builder.Services.AddScoped<IAlbumRepository,  AlbumRepository>();
 builder.Services.AddScoped<IGroupMemberRepository,GroupMemberRepository>();
+builder.Services.AddScoped<IGenericRepository, GenericRepository>();
 
 builder.Services.AddScoped<IGroupMusicBLL, GroupMusicBLL>();
 builder.Services.AddScoped<ISongBLL,SongBLL>();

@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace ProvidingMusic.Database.IRepositories
 {
-    public interface ISongRepository
+    public interface ISongRepository: IGenericRepository<Song>
     {
-        Task<IEnumerable<Song>> GetSongsFromDbAsync();
         Task<Song> GetSongRandomFromDbAsync();
-        Task<Song> GetSongByIdFromDbAsync(string name);
     }
 }

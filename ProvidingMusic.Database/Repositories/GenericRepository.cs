@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ProvidingMusic.Database.Context;
+using ProvidingMusic.Database.IRepositories;
+using ProvidingMusic.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,44 +11,40 @@ using System.Threading.Tasks;
 
 namespace ProvidingMusic.Database.Repositories
 {
-    public class GenericRepository<TEntity> where TEntity : class
+    public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : BaseEntity
     {
-        public ApplicationDBContext context;
-        public DbSet<TEntity> dbSet;
-        public GenericRepository(ApplicationDBContext context)
+        private readonly ApplicationDBContext _dbContext;
+        private readonly DbSet<TEntity> _dbSet;
+        public GenericRepository(ApplicationDBContext dBContext)
         {
-            this.context = context;
-            this.dbSet = context.Set<TEntity>();
+            _dbContext = dBContext;
+            _dbSet = _dbContext.Set<TEntity>();
         }
-        public virtual IEnumerable<TEntity> Get(Expression<Func<TEntity, bool>> filter = null,
-           Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
-           string includeProperties = "")
+        public virtual IEnumerable<TEntity> GetAllAsync()
         {
-            IQueryable<TEntity> query = dbSet;
-
-            if (filter != null)
-            {
-                query = query.Where(filter);
-            }
-
-            foreach (var includeProperty in includeProperties.Split
-                (new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
-            {
-                query = query.Include(includeProperty);
-            }
-
-            if (orderBy != null)
-            {
-                return orderBy(query).ToList();
-            }
-            else
-            {
-                return query.ToList();
-            }
+            return _dbSet.ToList();
         }
-        public virtual TEntity GetByID(object id)
+        public virtual TEntity GetByIdAsync(int id)
         {
-            return dbSet.Find(id);
+            return _dbSet.Find(id);
         }
+        public virtual void CreateAsync(TEntity entity)
+        {
+            _dbSet.Add(entity);
+        }
+        public virtual void UpdateAsync(TEntity entity)
+        {
+            _dbSet.Attach(entity);//update
+            _dbContext.Entry(entity).State = EntityState.Modified;
+        }
+        public virtual void DeleteAsync(object id)
+        {
+             TEntity entity = _dbSet.Find(id);  
+            _dbSet.Remove(entity);
+        }
+        public virtual void SaveAsync()
+        {
+            _dbContext.SaveChanges();
+        }       
     }
 }
