@@ -5,8 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProvidingMusic.Database.IRepositories
+namespace ProvidingMusic.BusinessLogic.Services.Intefaces
 {
-    public interface ISongRepository: IGenericRepository<Song>,IGenericRandomRepository<Song>
+    public interface IAlbumService:IGenericService<Album>,IGenericRandomService<Album>
     {}
 }

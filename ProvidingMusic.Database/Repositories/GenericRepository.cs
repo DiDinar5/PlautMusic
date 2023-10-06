@@ -13,20 +13,20 @@ namespace ProvidingMusic.Database.Repositories
 {
     public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : BaseEntity
     {
-        private readonly ApplicationDBContext _dbContext;
+        protected readonly ApplicationDBContext _dbContext;
         private readonly DbSet<TEntity> _dbSet;
         public GenericRepository(ApplicationDBContext dBContext)
         {
             _dbContext = dBContext;
             _dbSet = _dbContext.Set<TEntity>();
         }
-        public virtual IEnumerable<TEntity> GetAllAsync()
+        public virtual async Task<IEnumerable<TEntity>> GetAllAsync()
         {
-            return _dbSet.ToList();
+            return await _dbSet.OrderBy(x => x.Name).ToListAsync();
         }
-        public virtual TEntity GetByIdAsync(int id)
+        public virtual async Task<TEntity> GetByIdAsync(int id)
         {
-            return _dbSet.Find(id);
+            return await _dbSet.FindAsync(id);
         }
         public virtual void CreateAsync(TEntity entity)
         {
@@ -39,12 +39,12 @@ namespace ProvidingMusic.Database.Repositories
         }
         public virtual void DeleteAsync(object id)
         {
-             TEntity entity = _dbSet.Find(id);  
+            TEntity entity = _dbSet.Find(id);
             _dbSet.Remove(entity);
         }
         public virtual void SaveAsync()
         {
             _dbContext.SaveChanges();
-        }       
+        }
     }
 }

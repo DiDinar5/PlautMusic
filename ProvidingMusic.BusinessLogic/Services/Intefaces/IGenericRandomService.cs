@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace ProvidingMusic.BusinessLogic.Services.Intefaces
 {
-    public interface ISongBLL : IGenericBLL<Song>
+    public interface IGenericRandomService<T> where T : BaseEntity
     {
-        Task<Song> GetSongRandomConnection();
+        Task<T> GetRandomEntityConnection();
     }
 }

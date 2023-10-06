@@ -3,9 +3,6 @@ using System.Text.RegularExpressions;
 
 namespace ProvidingMusic.Database.IRepositories
 {
-    public interface IGroupMusicRepository
-    {
-        Task<IEnumerable<GroupMusic>> GetGroupsFromDbAsync();
-        Task<GroupMusic> GetGroupByIdFromDbAsync(int? musicGroupId);
-    }
+    public interface IGroupMusicRepository : IGenericRepository<GroupMusic>,IGenericRandomRepository<GroupMusic>
+    {}
 }

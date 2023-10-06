@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 
 namespace ProvidingMusic.Database.IRepositories
 {
-    public interface ISongRepository: IGenericRepository<Song>,IGenericRandomRepository<Song>
-    {}
+    public interface IGenericRandomRepository<TEntity> where TEntity : BaseEntity
+    {
+        Task<TEntity> GetRandomEntityFromDbAsync();
+    }
 }

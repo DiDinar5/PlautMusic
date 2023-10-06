@@ -10,17 +10,17 @@ using System.Threading.Tasks;
 
 namespace ProvidingMusic.Database.Repositories
 {
-    public class GroupMemberRepository : IGroupMemberRepository
+    public class GroupMemberRepository : GenericRepository<GroupMember>, IGroupMemberRepository
     {
-        private readonly ApplicationDBContext _dbContext;
-        public GroupMemberRepository(ApplicationDBContext dBContext)
+        private readonly IGenericRandomRepository<GroupMember> _genericRandomRepository;
+        public GroupMemberRepository(ApplicationDBContext dBContext, IGenericRandomRepository<GroupMember> genericRandomRepository) : base(dBContext)
         {
-            _dbContext = dBContext;
-        }
-        public async Task<IEnumerable<GroupMember>> GetGropMembersFromDbAsync()=>
-            await _dbContext.GroupMembers.OrderBy(x=>x.FirstName).ToListAsync();
+            _genericRandomRepository = genericRandomRepository;
 
-        public async Task<GroupMember> GetGroupMemberByIdFromDbAsync(string nickname) =>
-            await _dbContext.GroupMembers.Where(x=>x.Nickname==nickname).FirstAsync();//wrong
+        }
+        public async Task<GroupMember?> GetRandomEntityFromDbAsync()
+        {
+            return await _genericRandomRepository.GetRandomEntityFromDbAsync();
+        }
     }
 }

@@ -6,6 +6,7 @@ using ProvidingMusic.BusinessLogic.Services.Intefaces;
 using ProvidingMusic.Database.Context;
 using ProvidingMusic.Database.IRepositories;
 using ProvidingMusic.Database.Repositories;
+using ProvidingMusic.Domain.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,21 +18,28 @@ builder.Services.AddDbContext<ApplicationDBContext>(opt=>
 {
     opt.UseNpgsql(builder.Configuration.GetConnectionString("DefaulConnection"));
 });
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 //FluentAPI
 
+builder.Services.AddScoped<ApplicationDBContext>();
+
 builder.Services.AddScoped<IGroupMusicRepository, GroupMusicRepository>();
 builder.Services.AddScoped<ISongRepository, SongRepository>();
-builder.Services.AddScoped<IAlbumRepository,  AlbumRepository>();
-builder.Services.AddScoped<IGroupMemberRepository,GroupMemberRepository>();
-builder.Services.AddScoped<IGenericRepository, GenericRepository>();
+builder.Services.AddScoped<IAlbumRepository, AlbumRepository>();
+builder.Services.AddScoped<IGroupMemberRepository, GroupMemberRepository>();
+builder.Services.AddScoped(typeof(IGenericService<>), typeof(GenericService<>));
+builder.Services.AddScoped(typeof(IGenericRandomService<>), typeof(GenericRandomService<>));
 
-builder.Services.AddScoped<IGroupMusicBLL, GroupMusicBLL>();
-builder.Services.AddScoped<ISongBLL,SongBLL>();
-builder.Services.AddScoped<IAlbumBLL,AlbumBLL>();
-builder.Services.AddScoped<IGroupMemberBLL,GroupMemberBLL>();
+
+builder.Services.AddScoped<IGroupMusicService, GroupMusicService>();
+builder.Services.AddScoped<ISongService, SongService>();
+builder.Services.AddScoped<IAlbumService, AlbumService>();
+builder.Services.AddScoped<IGroupMemberService, GroupMemberService>();
+builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+builder.Services.AddScoped(typeof(IGenericRandomRepository<>), typeof(GenericRandomRepository<>));
+
 
 
 var app = builder.Build();

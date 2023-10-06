@@ -7,9 +7,6 @@ using System.Threading.Tasks;
 
 namespace ProvidingMusic.Database.IRepositories
 {
-    public interface IAlbumRepository
-    {
-        Task<IEnumerable<Album>> GetAlbumsFromDbAsync();
-        Task<Album> GetAlbumByIdFromDbAsync(int id);   
-    }
+    public interface IAlbumRepository : IGenericRepository<Album>, IGenericRandomRepository<Album>
+    {}
 }

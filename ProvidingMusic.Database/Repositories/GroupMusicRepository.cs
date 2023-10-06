@@ -5,17 +5,17 @@ using ProvidingMusic.Domain.Models;
 
 namespace ProvidingMusic.Database.Repositories
 {
-    public class GroupMusicRepository : IGroupMusicRepository
+    public class GroupMusicRepository : GenericRepository<GroupMusic>, IGroupMusicRepository
     {
-        private ApplicationDBContext _dbContext;
-        public GroupMusicRepository(ApplicationDBContext _dBContext)
+        private readonly IGenericRandomRepository<GroupMusic> _genericRandomRepository;
+        public GroupMusicRepository(ApplicationDBContext dBContext, IGenericRandomRepository<GroupMusic> genericRandomRepository) : base(dBContext) 
         {
-            _dbContext = _dBContext;
+            _genericRandomRepository = genericRandomRepository;
         }
-        public async Task<IEnumerable<GroupMusic>> GetGroupsFromDbAsync() =>
-             await _dbContext.GroupsMusic.OrderBy(x => x.Name).ToListAsync();
 
-        public async Task<GroupMusic> GetGroupByIdFromDbAsync(int? musicGroupId) =>
-            await _dbContext.GroupsMusic.FindAsync(musicGroupId);
+        public async Task<GroupMusic> GetRandomEntityFromDbAsync()
+        {
+            return await _genericRandomRepository.GetRandomEntityFromDbAsync();
+        }
     }
 }

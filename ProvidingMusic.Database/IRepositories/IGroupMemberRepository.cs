@@ -7,9 +7,6 @@ using System.Threading.Tasks;
 
 namespace ProvidingMusic.Database.IRepositories
 {
-    public interface IGroupMemberRepository
-    {
-        Task<IEnumerable<GroupMember>> GetGropMembersFromDbAsync();
-        Task<GroupMember> GetGroupMemberByIdFromDbAsync(string nickname);
-    }
+    public interface IGroupMemberRepository: IGenericRepository<GroupMember>,IGenericRandomRepository<GroupMember>
+    {}
 }

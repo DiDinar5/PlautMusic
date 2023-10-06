@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProvidingMusic.BusinessLogic.Services.Intefaces;
+using ProvidingMusic.Domain.Models;
 
 namespace ProvidingMusic.API.Controllers
 {
@@ -7,8 +8,8 @@ namespace ProvidingMusic.API.Controllers
     [ApiController]
     public class SongController : Controller
     {
-        private readonly ISongBLL _songBLL;
-        public SongController(ISongBLL songBLL)
+        private readonly ISongService _songBLL;
+        public SongController(ISongService songBLL)
         {
             _songBLL = songBLL;
         }
@@ -19,16 +20,16 @@ namespace ProvidingMusic.API.Controllers
         [HttpGet("getAll")]
         public async Task<IActionResult> GetSongs()
         {
-            return Ok(await _songBLL.GetSongsConnection());
+            return Ok(await _songBLL.GetAllConnectionAsync());
         }
 
         ///<summary>
         ///Метод, который ничего не принимает и возвращает рандомную песню
         ///</summary>
-        [HttpGet("getRandom")]
+        [HttpGet("getsongRandom")]
         public async Task<IActionResult> GetSongRandom()
         {
-            return Ok(await _songBLL.GetSongRandomConnection());
+            return Ok(await _songBLL.GetRandomEntityConnection());
         }
 
         /// <summary>
@@ -36,13 +37,19 @@ namespace ProvidingMusic.API.Controllers
         /// </summary>
         /// <param name="name"></param>
         /// <returns>Возвращает код(200,400,500) и выбранную песню</returns>
-        [HttpGet("{name}")]
-        public async Task<IActionResult> GetSong(string name)
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetSong(int id)
         {
-            if(string.IsNullOrEmpty(name))
-                return BadRequest(new {Message = "name of song is null"});
+            //if(string.IsNullOrEmpty(id))
+            //    return BadRequest(new {Message = "name of song is null"});
             //EFfunctionsLike
-            return Ok(await _songBLL.GetSongByIdConnection(name));
+            return Ok(await _songBLL.GetByIdConnectionAsync(id));
+        }
+        [HttpPost("createSong")]
+        public async Task<IActionResult> CreateSong(Song song)
+        {
+            _songBLL.CreateConnectionAsync(song);
+            return Ok(new {Message="song created"});
         }
     }
 }

@@ -8,8 +8,8 @@ namespace ProvidingMusic.API.Controllers
     [ApiController]
     public class GroupMusicController : Controller
     {
-        private readonly IGroupMusicBLL _musicBLL;
-        public GroupMusicController(IGroupMusicBLL musicBLL)
+        private readonly IGroupMusicService _musicBLL;
+        public GroupMusicController(IGroupMusicService musicBLL)
         {
             _musicBLL = musicBLL;
         }
@@ -27,12 +27,17 @@ namespace ProvidingMusic.API.Controllers
 
             //EFfunctionsLike
             //контроллер вызывает сервис из бизнес логики
-            return Ok(await _musicBLL.GetGroupsConnection());
+            return Ok(await _musicBLL.GetAllConnectionAsync());
+        }
+        [HttpGet("randomGroupMusic")]
+        public async Task<IActionResult> GetGroupMusicRandom()
+        {
+            return Ok(await _musicBLL.GetRandomEntityConnection());
         }
         [HttpGet("{id}")]
         public async Task<IActionResult> GetMusicGroup(int id)
         {
-            return Ok(await _musicBLL.GetGroupByIdConnection(id));
+            return Ok(await _musicBLL.GetByIdConnectionAsync(id));
         }
     }
 }

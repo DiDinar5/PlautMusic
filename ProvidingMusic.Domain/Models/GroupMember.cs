@@ -11,9 +11,6 @@ namespace ProvidingMusic.Domain.Models
     public class GroupMember : BaseEntity
     {
         [Required]
-        public string FirstName { get; set; }
-
-        [Required]
         public string LastName { get; set; }
 
         [Required]
@@ -24,6 +21,5 @@ namespace ProvidingMusic.Domain.Models
 
         [Required]
         public DateTime DateOfDeath { get; set;}
-
     }
 }

@@ -10,18 +10,16 @@ using System.Threading.Tasks;
 
 namespace ProvidingMusic.Database.Repositories
 {
-    public class AlbumRepository: IAlbumRepository
+    public class AlbumRepository: GenericRepository<Album>, IAlbumRepository
     {
-        private readonly ApplicationDBContext _dbContext;
-        public AlbumRepository(ApplicationDBContext dBContext)
+        private readonly IGenericRandomRepository<Album> _genericRandomRepository;
+        public AlbumRepository(ApplicationDBContext dBContext, IGenericRandomRepository<Album> genericRandomRepository) : base(dBContext)
         {
-                _dbContext = dBContext;
+            _genericRandomRepository = genericRandomRepository;
         }
-        public async Task<IEnumerable<Album>> GetAlbumsFromDbAsync()=>
-            await _dbContext.Albums.OrderBy(x=>x.Name).ToListAsync();
-        
-        public async Task<Album> GetAlbumByIdFromDbAsync(int id)=>
-            await _dbContext.Albums.FindAsync(id);
-        
+        public async Task<Album?> GetRandomEntityFromDbAsync()
+        {
+            return await _genericRandomRepository.GetRandomEntityFromDbAsync(); //не все альбомы попадают в рандом
+        }
     }
 }

@@ -7,9 +7,6 @@ using System.Threading.Tasks;
 
 namespace ProvidingMusic.BusinessLogic.Services.Intefaces
 {
-    public interface IGroupMemberBLL
-    {
-        Task<IEnumerable<GroupMember>> GetGroupMembersConnection();
-        Task<GroupMember> GetGroupMemberByIdConnection(string nickname);
-    }
+    public interface IGroupMemberService:IGenericService<GroupMember>,IGenericRandomService<GroupMember>
+    {}
 }

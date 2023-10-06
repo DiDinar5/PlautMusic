@@ -8,20 +8,25 @@ namespace ProvidingMusic.API.Controllers
     [ApiController]
     public class GroupMemberController : Controller
     {
-        private readonly IGroupMemberBLL _groupMemberBLL;
-        public GroupMemberController(IGroupMemberBLL groupMemberBLL)
+        private readonly IGroupMemberService _groupMemberBLL;
+        public GroupMemberController(IGroupMemberService groupMemberBLL)
         {
             _groupMemberBLL = groupMemberBLL;
         }
         [HttpGet]
         public async Task<IActionResult> GetGroupMembers()
         {
-            return Ok(await _groupMemberBLL.GetGroupMembersConnection());
+            return Ok(await _groupMemberBLL.GetAllConnectionAsync());
         }
-        [HttpGet("{nickname}")]
-        public async Task<IActionResult> GetGroupMember(string nickname)
+        [HttpGet("getRandomGroupMember")]
+        public async Task<IActionResult> GetGroupMemberRandom()
         {
-            return Ok(await _groupMemberBLL.GetGroupMemberByIdConnection(nickname));
+            return Ok(await _groupMemberBLL.GetRandomEntityConnection());
+        }
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetGroupMember(int id)
+        {
+            return Ok(await _groupMemberBLL.GetByIdConnectionAsync(id));
         }
     }
 }
