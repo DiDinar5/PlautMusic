@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProvidingMusic.BusinessLogic.Services.Intefaces;
 using ProvidingMusic.Database.IRepositories;
+using ProvidingMusic.Domain.Models;
 
 namespace ProvidingMusic.API.Controllers
 {
@@ -19,7 +20,7 @@ namespace ProvidingMusic.API.Controllers
         ///Посмотреть все музыкальные группы
         ///</summary>
         ///<returns></returns>
-        
+
         [HttpGet]
         public async Task<IActionResult> GetMusicGroups()
         {
@@ -38,6 +39,21 @@ namespace ProvidingMusic.API.Controllers
         public async Task<IActionResult> GetMusicGroup(int id)
         {
             return Ok(await _musicBLL.GetByIdConnectionAsync(id));
+        }
+        [HttpPost("createGroupMusic")]
+        public async Task<IActionResult> CreateMusicGroup(GroupMusic groupMusic)
+        {
+            return Ok(await _musicBLL.CreateConnectionAsync(groupMusic));
+        }
+        [HttpPatch("updateGroupMusic")]
+        public async Task<IActionResult> UpdateGroupMusic(GroupMusic groupMusic)
+        {
+            return Ok(await _musicBLL.UpdateConnectionAsync(groupMusic));
+        }
+        [HttpDelete("deleteGroupMusic")]
+        public async Task<IActionResult> DeleteGroupMusic(int id)
+        {
+            return Ok(await _musicBLL.DeleteConnectionAsync(id));
         }
     }
 }

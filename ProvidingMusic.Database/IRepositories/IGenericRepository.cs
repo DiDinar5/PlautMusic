@@ -7,10 +7,10 @@ namespace ProvidingMusic.Database.IRepositories
     { 
         Task<IEnumerable<TEntity>> GetAllAsync();
         Task<TEntity> GetByIdAsync(int id);
-        void CreateAsync(TEntity entity);
-        void UpdateAsync(TEntity entity);
-        void DeleteAsync(object id);
-        void SaveAsync();
+        Task<TEntity> CreateAsync(TEntity entity);
+        Task<TEntity> UpdateAsync(TEntity entity);
+        Task<bool> DeleteAsync(int id);
+        Task SaveAsync();
         //Сделать все ассинхронным
     }
 }

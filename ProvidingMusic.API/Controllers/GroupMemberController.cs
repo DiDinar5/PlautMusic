@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using ProvidingMusic.BusinessLogic.Services.Intefaces;
+using ProvidingMusic.Domain.Models;
 using System.Globalization;
 
 namespace ProvidingMusic.API.Controllers
@@ -27,6 +29,21 @@ namespace ProvidingMusic.API.Controllers
         public async Task<IActionResult> GetGroupMember(int id)
         {
             return Ok(await _groupMemberBLL.GetByIdConnectionAsync(id));
+        }
+        [HttpPost("createGroupMember")]
+        public async Task<IActionResult> CreateGroupMember(GroupMember groupMember)
+        {
+            return Ok(await _groupMemberBLL.CreateConnectionAsync(groupMember));
+        }
+        [HttpPatch("updateGroupMember")]
+        public async Task<IActionResult> UpdateGroupMember(GroupMember groupMember)
+        {
+            return Ok(await _groupMemberBLL.UpdateConnectionAsync(groupMember));
+        }
+        [HttpDelete("deleteGroupMember")]
+        public async Task<IActionResult> DeleteGroupMember(int id)
+        {
+            return Ok(await _groupMemberBLL.DeleteConnectionAsync(id));
         }
     }
 }

@@ -26,18 +26,21 @@ namespace ProvidingMusic.BusinessLogic.Services
             return await _repository.GetByIdAsync(id);
         }
 
-        public void CreateConnectionAsync(TEntity entity)
+        public async Task<TEntity> CreateConnectionAsync(TEntity entity)
         {
-             _repository.CreateAsync(entity);
+            var ent  = await _repository.CreateAsync(entity);
+            return ent;
         }
 
-        public void UpdateConnectionAsync(TEntity entity)
+        public async Task<TEntity> UpdateConnectionAsync(TEntity entity)
         {
-            _repository.UpdateAsync(entity);
+            await _repository.UpdateAsync(entity);
+            return entity;
         }
-        public void DeleteConnectionAsync(TEntity entity)
+        public async Task<bool> DeleteConnectionAsync(int id)
         {
-            _repository.DeleteAsync(entity);
+            await _repository.DeleteAsync(id);
+            return true;
         }
     }
 }

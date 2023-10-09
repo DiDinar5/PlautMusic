@@ -11,10 +11,8 @@ namespace ProvidingMusic.BusinessLogic.Services.Intefaces
     {
         Task<IEnumerable<TEntity>> GetAllConnectionAsync();
         Task<TEntity> GetByIdConnectionAsync(int id);
-        void CreateConnectionAsync(TEntity entity);
-        void UpdateConnectionAsync(TEntity entity);
-        void DeleteConnectionAsync(TEntity entity);
-
-
+        Task<TEntity> CreateConnectionAsync(TEntity entity);
+        Task<TEntity> UpdateConnectionAsync(TEntity entity);
+        Task<bool> DeleteConnectionAsync(int id);
     }
 }

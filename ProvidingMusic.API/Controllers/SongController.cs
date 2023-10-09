@@ -48,8 +48,17 @@ namespace ProvidingMusic.API.Controllers
         [HttpPost("createSong")]
         public async Task<IActionResult> CreateSong(Song song)
         {
-            _songBLL.CreateConnectionAsync(song);
-            return Ok(new {Message="song created"});
+            return Ok(await _songBLL.CreateConnectionAsync(song));
+        }
+        [HttpPatch("updateSong")]
+        public async Task<IActionResult> UpdateSong(Song song)
+        {
+            return Ok(await _songBLL.UpdateConnectionAsync(song));
+        }
+        [HttpDelete("deleteSong")]
+        public async Task<IActionResult> DeleteSong(int id)
+        {
+            return Ok(await _songBLL.DeleteConnectionAsync(id));
         }
     }
 }

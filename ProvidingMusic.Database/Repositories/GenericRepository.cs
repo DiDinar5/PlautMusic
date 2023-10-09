@@ -2,12 +2,6 @@
 using ProvidingMusic.Database.Context;
 using ProvidingMusic.Database.IRepositories;
 using ProvidingMusic.Domain.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProvidingMusic.Database.Repositories
 {
@@ -28,23 +22,30 @@ namespace ProvidingMusic.Database.Repositories
         {
             return await _dbSet.FindAsync(id);
         }
-        public virtual void CreateAsync(TEntity entity)
+        public async Task<TEntity> CreateAsync(TEntity entity)
         {
-            _dbSet.Add(entity);
+            await _dbSet.AddAsync(entity);
+            //упадет производительность
+            await SaveAsync();
+            return entity;
         }
-        public virtual void UpdateAsync(TEntity entity)
+        public virtual async Task<TEntity> UpdateAsync(TEntity entity)
         {
-            _dbSet.Attach(entity);//update
-            _dbContext.Entry(entity).State = EntityState.Modified;
+            _dbSet.Update(entity);//attach добавит в бд сущность, даже если ее нет
+            await SaveAsync();        //_dbContext.Entry(entity).State = EntityState.Modified;
+            return entity;
         }
-        public virtual void DeleteAsync(object id)
+        public virtual async Task<bool> DeleteAsync(int id)
         {
             TEntity entity = _dbSet.Find(id);
             _dbSet.Remove(entity);
+            await SaveAsync();
+            return true;    
+
         }
-        public virtual void SaveAsync()
+        public virtual async Task SaveAsync()
         {
-            _dbContext.SaveChanges();
+            await _dbContext.SaveChangesAsync();
         }
     }
 }

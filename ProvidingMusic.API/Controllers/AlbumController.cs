@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProvidingMusic.BusinessLogic.Services.Intefaces;
 using ProvidingMusic.Database.Data.Migrations;
+using ProvidingMusic.Domain.Models;
 
 namespace ProvidingMusic.API.Controllers
 {
@@ -23,10 +24,25 @@ namespace ProvidingMusic.API.Controllers
         {
             return Ok(await _albumBLL.GetByIdConnectionAsync(id));
         }
-        [HttpGet("getalbumRandom")]
+        [HttpGet("getAlbumRandom")]
         public async Task<IActionResult> GetRandomAlbum()
         {
             return Ok(await _albumBLL.GetRandomEntityConnection());
+        }
+        [HttpPost("createAlbum")]
+        public async Task<IActionResult> CreateAlbum(Album album)
+        {
+            return Ok(await _albumBLL.CreateConnectionAsync(album));
+        }
+        [HttpPatch("updateAlbum")]
+        public async Task<IActionResult> UpdateAlbum(Album album)
+        {
+            return Ok(await _albumBLL.UpdateConnectionAsync(album));
+        }
+        [HttpDelete("deleteAlbum")]
+        public async Task<IActionResult> DeleteAlbum(int id)
+        {
+            return Ok(await _albumBLL.DeleteConnectionAsync(id));
         }
     }
 }
