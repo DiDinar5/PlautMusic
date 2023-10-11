@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 
 namespace ProvidingMusic.BusinessLogic.Services.Intefaces
 {
-    public interface ISongService : IGenericService<Song>,IGenericRandomService<Song>,IGenericSearchByNameService<Song>
-    {}
+    public interface IGenericSearchByNameService<T> where T : NameEntity
+    {
+        Task<T> GetEntityByName(string name);
+    }
 }

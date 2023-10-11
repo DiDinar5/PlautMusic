@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace ProvidingMusic.Database.IRepositories
 {
-    public interface IAlbumRepository : IGenericRepository<Album>, 
-        IGenericRandomRepository<Album>,
-        IGenericSearchByNameRepository<Album>
-    {}
+    public interface IGenericSearchByNameRepository<T> where T : NameEntity
+    {
+        Task<T> SearchByNameAsync(string name);
+    }
 }

@@ -9,11 +9,11 @@ using ProvidingMusic.Database.Context;
 
 #nullable disable
 
-namespace ProvidingMusic.Database.Data.Migrations
+namespace ProvidingMusic.Database.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20230928074034_InitialMigration3")]
-    partial class InitialMigration3
+    [Migration("20231009151753_initial3")]
+    partial class initial3
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,33 +33,48 @@ namespace ProvidingMusic.Database.Data.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime>("DateCreate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int?>("GroupMusicId")
+                        .HasColumnType("integer");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<int>("WorldRating")
+                        .HasColumnType("integer");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("GroupMusicId");
 
                     b.ToTable("Albums");
                 });
 
             modelBuilder.Entity("ProvidingMusic.Domain.Models.GroupMember", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
-
-                    b.Property<int>("Age")
                         .HasColumnType("integer");
 
-                    b.Property<string>("Awards")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<DateTime>("DateOfBirth")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime>("DateOfDeath")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int?>("GroupMusicId")
+                        .HasColumnType("integer");
 
                     b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
 
@@ -68,6 +83,8 @@ namespace ProvidingMusic.Database.Data.Migrations
                         .HasColumnType("text");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("GroupMusicId");
 
                     b.ToTable("GroupMembers");
                 });
@@ -80,11 +97,14 @@ namespace ProvidingMusic.Database.Data.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime>("DateOfFoundation")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("Rating")
+                    b.Property<int>("WorldRating")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
@@ -100,12 +120,61 @@ namespace ProvidingMusic.Database.Data.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<int?>("AlbumId")
+                        .HasColumnType("integer");
+
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("text");
+
+                    b.Property<string>("Performers")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<double>("SongDuration")
+                        .HasColumnType("double precision");
+
+                    b.Property<int>("WorldRating")
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("AlbumId");
+
                     b.ToTable("Songs");
+                });
+
+            modelBuilder.Entity("ProvidingMusic.Domain.Models.Album", b =>
+                {
+                    b.HasOne("ProvidingMusic.Domain.Models.GroupMusic", null)
+                        .WithMany("Albums")
+                        .HasForeignKey("GroupMusicId");
+                });
+
+            modelBuilder.Entity("ProvidingMusic.Domain.Models.GroupMember", b =>
+                {
+                    b.HasOne("ProvidingMusic.Domain.Models.GroupMusic", null)
+                        .WithMany("GroupMembers")
+                        .HasForeignKey("GroupMusicId");
+                });
+
+            modelBuilder.Entity("ProvidingMusic.Domain.Models.Song", b =>
+                {
+                    b.HasOne("ProvidingMusic.Domain.Models.Album", null)
+                        .WithMany("Songs")
+                        .HasForeignKey("AlbumId");
+                });
+
+            modelBuilder.Entity("ProvidingMusic.Domain.Models.Album", b =>
+                {
+                    b.Navigation("Songs");
+                });
+
+            modelBuilder.Entity("ProvidingMusic.Domain.Models.GroupMusic", b =>
+                {
+                    b.Navigation("Albums");
+
+                    b.Navigation("GroupMembers");
                 });
 #pragma warning restore 612, 618
         }

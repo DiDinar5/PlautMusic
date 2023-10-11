@@ -9,11 +9,11 @@ using ProvidingMusic.Database.Context;
 
 #nullable disable
 
-namespace ProvidingMusic.Database.Data.Migrations
+namespace ProvidingMusic.Database.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20230926083250_InitialMigration2")]
-    partial class InitialMigration2
+    [Migration("20231009144449_initial")]
+    partial class initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,9 +33,15 @@ namespace ProvidingMusic.Database.Data.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime>("DateCreate")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
+
+                    b.Property<int>("WorldRating")
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 
@@ -44,22 +50,23 @@ namespace ProvidingMusic.Database.Data.Migrations
 
             modelBuilder.Entity("ProvidingMusic.Domain.Models.GroupMember", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
-
-                    b.Property<int>("Age")
                         .HasColumnType("integer");
 
-                    b.Property<string>("Awards")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<DateTime>("DateOfBirth")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime>("DateOfDeath")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
 
@@ -72,7 +79,7 @@ namespace ProvidingMusic.Database.Data.Migrations
                     b.ToTable("GroupMembers");
                 });
 
-            modelBuilder.Entity("ProvidingMusic.Domain.Models.MusicGroup", b =>
+            modelBuilder.Entity("ProvidingMusic.Domain.Models.GroupMusic", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -80,16 +87,19 @@ namespace ProvidingMusic.Database.Data.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime>("DateOfFoundation")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("Rating")
+                    b.Property<int>("WorldRating")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
 
-                    b.ToTable("MusicGroups");
+                    b.ToTable("GroupsMusic");
                 });
 
             modelBuilder.Entity("ProvidingMusic.Domain.Models.Song", b =>
@@ -103,6 +113,16 @@ namespace ProvidingMusic.Database.Data.Migrations
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
+
+                    b.Property<string>("Performers")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<double>("SongDuration")
+                        .HasColumnType("double precision");
+
+                    b.Property<int>("WorldRating")
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 

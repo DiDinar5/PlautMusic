@@ -31,6 +31,7 @@ builder.Services.AddScoped<IAlbumRepository, AlbumRepository>();
 builder.Services.AddScoped<IGroupMemberRepository, GroupMemberRepository>();
 builder.Services.AddScoped(typeof(IGenericService<>), typeof(GenericService<>));
 builder.Services.AddScoped(typeof(IGenericRandomService<>), typeof(GenericRandomService<>));
+builder.Services.AddScoped(typeof(IGenericSearchByNameService<>), typeof(GenericSearchByNameService<>));
 
 
 builder.Services.AddScoped<IGroupMusicService, GroupMusicService>();
@@ -39,6 +40,7 @@ builder.Services.AddScoped<IAlbumService, AlbumService>();
 builder.Services.AddScoped<IGroupMemberService, GroupMemberService>();
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddScoped(typeof(IGenericRandomRepository<>), typeof(GenericRandomRepository<>));
+builder.Services.AddScoped(typeof(IGenericSearchByNameRepository<>), typeof(GenericSearchByNameRepository<>));
 
 
 

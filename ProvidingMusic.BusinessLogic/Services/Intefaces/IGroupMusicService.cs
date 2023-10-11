@@ -1,8 +1,9 @@
-﻿using ProvidingMusic.Database.Data.Migrations;
-using ProvidingMusic.Domain.Models;
+﻿using ProvidingMusic.Domain.Models;
 
 namespace ProvidingMusic.BusinessLogic.Services.Intefaces
 {
-    public interface IGroupMusicService: IGenericService<GroupMusic>,IGenericRandomService<GroupMusic>
+    public interface IGroupMusicService: IGenericService<GroupMusic>,
+        IGenericRandomService<GroupMusic>,
+        IGenericSearchByNameService<GroupMusic>
     {}
 }

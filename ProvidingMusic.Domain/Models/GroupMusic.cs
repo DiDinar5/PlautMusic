@@ -2,16 +2,13 @@
 
 namespace ProvidingMusic.Domain.Models
 {
-    public class GroupMusic : BaseEntity
+    public class GroupMusic : NameEntity
     {
-        [Range(0, 10)]
-        public int WorldRating { get; set; }
+        [Required]
+        public List<GroupMember> ListGroupMembers { get; set; } = new();
 
         [Required]
-        public DateTime DateOfFoundation { get; set; }
-
-        [Required]
-        public string Awards { get; set; }   //Array
+        public List<Album> ListAlbums { get; set; } = new();
     }
 }
 //FluentAPI

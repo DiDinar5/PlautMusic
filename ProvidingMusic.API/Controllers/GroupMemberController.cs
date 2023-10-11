@@ -18,6 +18,10 @@ namespace ProvidingMusic.API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetGroupMembers()
         {
+            if (!ModelState.IsValid)
+            {
+                return NotFound();
+            }
             return Ok(await _groupMemberBLL.GetAllConnectionAsync());
         }
         [HttpGet("getRandomGroupMember")]

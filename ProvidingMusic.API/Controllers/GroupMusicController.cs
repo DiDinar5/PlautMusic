@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProvidingMusic.BusinessLogic.Services.Intefaces;
 using ProvidingMusic.Database.IRepositories;
+using ProvidingMusic.Database.MusicGroup;
 using ProvidingMusic.Domain.Models;
+using System.Globalization;
 
 namespace ProvidingMusic.API.Controllers
 {
@@ -24,11 +26,20 @@ namespace ProvidingMusic.API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetMusicGroups()
         {
+            if (!ModelState.IsValid)
+            {
+                return NotFound();
+            }
             //валидация
 
             //EFfunctionsLike
             //контроллер вызывает сервис из бизнес логики
             return Ok(await _musicBLL.GetAllConnectionAsync());
+        }
+        [HttpGet("getGroupMusicByName")]
+        public async Task<IActionResult> GEtGroupMusicInfo(string name)
+        {
+            return Ok(await _musicBLL.GetEntityByName(name));
         }
         [HttpGet("randomGroupMusic")]
         public async Task<IActionResult> GetGroupMusicRandom()

@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProvidingMusic.Database.DTO
+namespace ProvidingMusic.Domain.Models
 {
-    internal class ReturningMessageDTO
+    public class NameEntity : BaseEntity
     {
+        public string Name { get; set; }
     }
 }

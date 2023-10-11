@@ -1,4 +1,5 @@
-﻿using ProvidingMusic.Domain.Models;
+﻿using ProvidingMusic.Database.IRepositories;
+using ProvidingMusic.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace ProvidingMusic.Database.IRepositories
 {
-    public interface ISongRepository: IGenericRepository<Song>,IGenericRandomRepository<Song>
+    public interface ISongRepository: IGenericRepository<Song>,IGenericRandomRepository<Song>,IGenericSearchByNameRepository<Song>
     {}
 }
+

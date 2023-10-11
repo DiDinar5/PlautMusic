@@ -2,6 +2,7 @@
 using ProvidingMusic.Database.Context;
 using ProvidingMusic.Database.IRepositories;
 using ProvidingMusic.Domain.Models;
+using System.Linq;
 
 namespace ProvidingMusic.Database.Repositories
 {
@@ -16,7 +17,7 @@ namespace ProvidingMusic.Database.Repositories
         }
         public virtual async Task<IEnumerable<TEntity>> GetAllAsync()
         {
-            return await _dbSet.OrderBy(x => x.Name).ToListAsync();
+            return await _dbSet.OrderBy(x => x.Id).ToListAsync();
         }
         public virtual async Task<TEntity> GetByIdAsync(int id)
         {

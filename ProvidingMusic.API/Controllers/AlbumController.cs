@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProvidingMusic.BusinessLogic.Services.Intefaces;
-using ProvidingMusic.Database.Data.Migrations;
 using ProvidingMusic.Domain.Models;
 
 namespace ProvidingMusic.API.Controllers
@@ -17,7 +16,16 @@ namespace ProvidingMusic.API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAlbums()
         {
+            if (!ModelState.IsValid)
+            {
+                return NotFound();
+            }
             return Ok(await _albumBLL.GetAllConnectionAsync());
+        }
+        [HttpGet("getAlbumByName")]
+        public async Task<IActionResult> GetAlbumByName(string name)
+        {
+            return Ok(await _albumBLL.GetEntityByName(name));
         }
         [HttpGet("{id}")]
         public async Task<IActionResult> GetAlbum(int id)

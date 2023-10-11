@@ -2,10 +2,10 @@
 
 #nullable disable
 
-namespace ProvidingMusic.Database.Data.Migrations
+namespace ProvidingMusic.Database.Migrations
 {
     /// <inheritdoc />
-    public partial class AddedPerformer : Migration
+    public partial class AddedNameEntity : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

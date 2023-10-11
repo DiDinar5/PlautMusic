@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 
 namespace ProvidingMusic.BusinessLogic.Services.Intefaces
 {
-    public interface IAlbumService:IGenericService<Album>,IGenericRandomService<Album>
+    public interface IAlbumService:IGenericService<Album>,
+        IGenericRandomService<Album>,
+        IGenericSearchByNameService<Album>
     {}
 }

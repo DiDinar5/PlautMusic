@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProvidingMusic.BusinessLogic.Services.Intefaces;
+using ProvidingMusic.Database.DTO;
 using ProvidingMusic.Domain.Models;
 
 namespace ProvidingMusic.API.Controllers
@@ -13,16 +14,24 @@ namespace ProvidingMusic.API.Controllers
         {
             _songBLL = songBLL;
         }
-
+        
         ///<summary>
         ///Метод, который ничего не принимает и возвращает все песни
         ///</summary>
         [HttpGet("getAll")]
         public async Task<IActionResult> GetSongs()
         {
+            if (!ModelState.IsValid)
+            {
+                return NotFound();
+            }
             return Ok(await _songBLL.GetAllConnectionAsync());
         }
-
+        [HttpGet("getSongByName")]
+        public async Task<IActionResult> GetSongByName(string name)
+        {
+            return Ok(await _songBLL.GetEntityByName(name));
+        }
         ///<summary>
         ///Метод, который ничего не принимает и возвращает рандомную песню
         ///</summary>

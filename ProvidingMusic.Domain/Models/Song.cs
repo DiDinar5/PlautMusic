@@ -1,21 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace ProvidingMusic.Domain.Models
 {
-    public class Song: BaseEntity
+    public class Song: NameEntity
     {
         [Required]
-        public string Performers { get; set; }
+        public int SequenceNumber { get; set; }
 
         [Required]
-        public double SongDuration { get; set; }
-
-        [Range(0,10)]
-        public int WorldRating { get; set; }
+        public int SongDuration { get; set; }
     }
 }

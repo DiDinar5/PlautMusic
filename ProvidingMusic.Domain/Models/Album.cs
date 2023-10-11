@@ -2,15 +2,12 @@
 
 namespace ProvidingMusic.Domain.Models
 {
-    public class Album: BaseEntity
+    public class Album: NameEntity
     {
         [Required]
-        public DateTime DateCreate{ get; set; }//performers
-
-        [Range(0,10)]
-        public int WorldRating { get; set; }
+        public int YearOfRelease { get; set; }
 
         [Required]
-        public string Awards { get; set; } //Array
+        public List<Song> ListSongs { get; set; } = new();
     }
 }
