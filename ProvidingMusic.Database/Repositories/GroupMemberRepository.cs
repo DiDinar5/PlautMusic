@@ -13,14 +13,19 @@ namespace ProvidingMusic.Database.Repositories
     public class GroupMemberRepository : GenericRepository<GroupMember>, IGroupMemberRepository
     {
         private readonly IGenericRandomRepository<GroupMember> _genericRandomRepository;
-        public GroupMemberRepository(ApplicationDBContext dBContext, IGenericRandomRepository<GroupMember> genericRandomRepository) : base(dBContext)
+        public GroupMemberRepository(ApplicationDBContext dBContext, 
+            IGenericRandomRepository<GroupMember> genericRandomRepository) : base(dBContext)
         {
             _genericRandomRepository = genericRandomRepository;
-
         }
-        public async Task<GroupMember?> GetRandomEntityFromDbAsync()
+        public async Task<GroupMember?> GetRandomAsync()
         {
-            return await _genericRandomRepository.GetRandomEntityFromDbAsync();
+            return await _genericRandomRepository.GetRandomAsync();
+        }
+
+        public async Task<GroupMember> SearchGroupMemberByNameAsync(string name)
+        {
+            return await _dbContext.GroupMembers.FirstAsync(x => EF.Functions.Like(x.FirstName.ToLower(), $"%{name}%"));
         }
     }
 }

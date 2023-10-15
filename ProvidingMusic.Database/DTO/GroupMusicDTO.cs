@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProvidingMusic.Database.MusicGroup
+namespace ProvidingMusic.Database.DTO
 {
     public class GroupMusicDTO
     {
@@ -14,8 +14,8 @@ namespace ProvidingMusic.Database.MusicGroup
 
         public string Name { get; set; }
 
-        public List<GroupMemberDTO> GroupMembersList { get; set; }
+        public List<GroupMemberDTO> ListGroupMembers { get; set; }
 
-        public List<AlbumDTO> AlbumsList { get; set;}
+        public List<AlbumDTO> ListAlbums { get; set;}
     }
 }

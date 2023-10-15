@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProvidingMusic.API", "Provi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProvidingMusic.BusinessLogic", "ProvidingMusic.BusinessLogic\ProvidingMusic.BusinessLogic.csproj", "{D2E90CE5-3C92-4142-A997-A2CD26B2E85F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProvidingMusic.Database", "ProvidingMusic.Database\ProvidingMusic.Database.csproj", "{3138739F-052A-4E03-AABA-BDAFDA897BE5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProvidingMusic.DataBase", "ProvidingMusic.Database\ProvidingMusic.DataBase.csproj", "{3138739F-052A-4E03-AABA-BDAFDA897BE5}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProvidingMusic.Domain", "ProvidingMusic.Domain\ProvidingMusic.Domain.csproj", "{76CD1984-4E87-42AB-9849-64B21940A936}"
 EndProject

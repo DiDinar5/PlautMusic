@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
+using ProvidingMusic.BusinessLogic.Services;
 using ProvidingMusic.BusinessLogic.Services.Intefaces;
+using ProvidingMusic.Database.Repositories;
 using ProvidingMusic.Domain.Models;
 using System.Globalization;
 
@@ -10,10 +12,13 @@ namespace ProvidingMusic.API.Controllers
     [ApiController]
     public class GroupMemberController : Controller
     {
-        private readonly IGroupMemberService _groupMemberBLL;
-        public GroupMemberController(IGroupMemberService groupMemberBLL)
+        private readonly IGroupMemberService _IgroupMemberService;
+     //   private readonly GroupMemberService _groupMemberService;
+
+        public GroupMemberController(IGroupMemberService IgroupMemberService)
         {
-            _groupMemberBLL = groupMemberBLL;
+            _IgroupMemberService = IgroupMemberService;
+            //_groupMemberService = groupMemberService;
         }
         [HttpGet]
         public async Task<IActionResult> GetGroupMembers()
@@ -22,32 +27,38 @@ namespace ProvidingMusic.API.Controllers
             {
                 return NotFound();
             }
-            return Ok(await _groupMemberBLL.GetAllConnectionAsync());
+            return Ok(await _IgroupMemberService.GetAllAsync());
+        }
+        [HttpGet("getGroupMemberByName")]
+        public async Task<IActionResult> GetGroupMemberByName(string name)
+        {
+
+            return Ok(await _IgroupMemberService.GetGroupMemberByName(name));
         }
         [HttpGet("getRandomGroupMember")]
         public async Task<IActionResult> GetGroupMemberRandom()
         {
-            return Ok(await _groupMemberBLL.GetRandomEntityConnection());
+            return Ok(await _IgroupMemberService.GetRandomAsync());
         }
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetGroupMember(int id)
-        {
-            return Ok(await _groupMemberBLL.GetByIdConnectionAsync(id));
-        }
+        //[HttpGet("{id}")]
+        //public async Task<IActionResult> GetGroupMember(int id)
+        //{
+        //    return Ok(await _IgroupMemberBLL.GetByIdConnectionAsync(id));
+        //}
         [HttpPost("createGroupMember")]
         public async Task<IActionResult> CreateGroupMember(GroupMember groupMember)
         {
-            return Ok(await _groupMemberBLL.CreateConnectionAsync(groupMember));
+            return Ok(await _IgroupMemberService.CreateAsync(groupMember));
         }
         [HttpPatch("updateGroupMember")]
         public async Task<IActionResult> UpdateGroupMember(GroupMember groupMember)
         {
-            return Ok(await _groupMemberBLL.UpdateConnectionAsync(groupMember));
+            return Ok(await _IgroupMemberService.UpdateAsync(groupMember));
         }
         [HttpDelete("deleteGroupMember")]
         public async Task<IActionResult> DeleteGroupMember(int id)
         {
-            return Ok(await _groupMemberBLL.DeleteConnectionAsync(id));
+            return Ok(await _IgroupMemberService.DeleteAsync(id));
         }
     }
 }

@@ -21,13 +21,13 @@ namespace ProvidingMusic.BusinessLogic.Services
             _genericSearchByNameService = genericSearchByNameService;   
         }
 
-        public async Task<Album> GetRandomEntityConnection()
+        public async Task<Album> GetRandomAsync()
         {
-            return await _genericRandomBLL.GetRandomEntityConnection();
+            return await _genericRandomBLL.GetRandomAsync();
         }
-        public async Task<Album> GetEntityByName(string name)
+        public async Task<Album> GetByNameAsync(string name)
         {
-            return await _genericSearchByNameService.GetEntityByName(name);
+            return await _genericSearchByNameService.GetByNameAsync(name);
         }
     }
 }

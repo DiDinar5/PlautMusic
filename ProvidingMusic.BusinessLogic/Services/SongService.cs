@@ -24,14 +24,14 @@ namespace ProvidingMusic.BusinessLogic.Services
             _searchByName = searchByName;
         }
 
-        public async Task<Song> GetEntityByName(string name)
+        public async Task<Song> GetByNameAsync(string name)
         {
-            return await _searchByName.GetEntityByName(name);
+            return await _searchByName.GetByNameAsync(name);
         }
 
-        public async Task<Song> GetRandomEntityConnection()
+        public async Task<Song> GetRandomAsync()
         {
-            return await _genericRandomBLL.GetRandomEntityConnection();
+            return await _genericRandomBLL.GetRandomAsync();
         }
     }
 }

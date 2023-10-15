@@ -16,14 +16,14 @@ namespace ProvidingMusic.Database.Repositories
             _randomRepository = randomRepository;
             _genericSearchByNameRepository = genericSearchByNameRepository;
         }
-        public async Task<Song> GetRandomEntityFromDbAsync()
+        public async Task<Song> GetRandomAsync()
         {
-            return await _randomRepository.GetRandomEntityFromDbAsync();
+            return await _randomRepository.GetRandomAsync();
         }
 
-        public async Task<Song> SearchByNameAsync(string name)
+        public async Task<Song> GetByNameAsync(string name)
         {
-            return await _genericSearchByNameRepository.SearchByNameAsync(name);
+            return await _genericSearchByNameRepository.GetByNameAsync(name);
         }
     }
 }

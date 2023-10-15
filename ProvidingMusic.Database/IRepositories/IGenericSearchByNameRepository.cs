@@ -9,6 +9,6 @@ namespace ProvidingMusic.Database.IRepositories
 {
     public interface IGenericSearchByNameRepository<T> where T : NameEntity
     {
-        Task<T> SearchByNameAsync(string name);
+        Task<T> GetByNameAsync(string name);
     }
 }

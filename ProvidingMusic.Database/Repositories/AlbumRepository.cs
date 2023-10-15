@@ -21,13 +21,13 @@ namespace ProvidingMusic.Database.Repositories
             _genericRandomRepository = genericRandomRepository;
             _genericSearchByNameRepository = genericSearchByNameRepository;
         }
-        public async Task<Album?> GetRandomEntityFromDbAsync()
+        public async Task<Album?> GetRandomAsync()
         {
-            return await _genericRandomRepository.GetRandomEntityFromDbAsync(); //не все альбомы попадают в рандом
+            return await _genericRandomRepository.GetRandomAsync(); //не все альбомы попадают в рандом
         }
-        public async Task<Album> SearchByNameAsync(string name)
+        public async Task<Album> GetByNameAsync(string name)
         {
-            return await _genericSearchByNameRepository.SearchByNameAsync(name);
+            return await _genericSearchByNameRepository.GetByNameAsync(name);
         }
     }
 }

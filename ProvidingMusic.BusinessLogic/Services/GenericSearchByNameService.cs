@@ -16,9 +16,9 @@ namespace ProvidingMusic.BusinessLogic.Services
         {
             _repository = repository;
         }
-        public async Task<T> GetEntityByName(string name)
+        public async Task<T> GetByNameAsync(string name)
         {
-            return await _repository.SearchByNameAsync(name);
+            return await _repository.GetByNameAsync(name);
         }
     }
 }

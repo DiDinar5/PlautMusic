@@ -1,24 +1,27 @@
 ﻿using ProvidingMusic.BusinessLogic.Services.Intefaces;
 using ProvidingMusic.Database.IRepositories;
 using ProvidingMusic.Domain.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProvidingMusic.BusinessLogic.Services
 {
     public class GroupMemberService : GenericService<GroupMember>,IGroupMemberService
     {
         private readonly IGenericRandomService<GroupMember> _genericRandomBLL;
-        public GroupMemberService(IGenericRepository<GroupMember> genericRepository,IGenericRandomService<GroupMember> genericRandomBLL) :base(genericRepository) 
+        private readonly IGroupMemberRepository _groupMemberRepository;
+        public GroupMemberService(IGenericRepository<GroupMember> genericRepository,
+            IGenericRandomService<GroupMember> genericRandomBLL,
+            IGroupMemberRepository groupMemberRepository) :base(genericRepository) 
         {
             _genericRandomBLL = genericRandomBLL;
+            _groupMemberRepository = groupMemberRepository;
         }
-        public async Task<GroupMember> GetRandomEntityConnection()
+        public async Task<GroupMember> GetRandomAsync()
         {
-            return await _genericRandomBLL.GetRandomEntityConnection();
+            return await _genericRandomBLL.GetRandomAsync();
+        }
+        public async Task<GroupMember> GetGroupMemberByName(string name)
+        {
+            return await _groupMemberRepository.SearchGroupMemberByNameAsync(name);
         }
     }
 }

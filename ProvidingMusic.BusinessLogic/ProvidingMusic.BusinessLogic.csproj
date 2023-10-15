@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ProvidingMusic.Database\ProvidingMusic.Database.csproj" />
+    <ProjectReference Include="..\ProvidingMusic.Database\ProvidingMusic.DataBase.csproj" />
     <ProjectReference Include="..\ProvidingMusic.Domain\ProvidingMusic.Domain.csproj" />
   </ItemGroup>
 

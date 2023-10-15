@@ -8,10 +8,10 @@ namespace ProvidingMusic.API.Controllers
     [ApiController]
     public class AlbumController : Controller
     {
-        private readonly IAlbumService _albumBLL;
-        public AlbumController(IAlbumService albumBLL)
+        private readonly IAlbumService _albumService;
+        public AlbumController(IAlbumService albumService)
         {
-            _albumBLL = albumBLL;
+            _albumService = albumService;
         }
         [HttpGet]
         public async Task<IActionResult> GetAlbums()
@@ -20,37 +20,37 @@ namespace ProvidingMusic.API.Controllers
             {
                 return NotFound();
             }
-            return Ok(await _albumBLL.GetAllConnectionAsync());
+            return Ok(await _albumService.GetAllAsync());
         }
         [HttpGet("getAlbumByName")]
         public async Task<IActionResult> GetAlbumByName(string name)
         {
-            return Ok(await _albumBLL.GetEntityByName(name));
+            return Ok(await _albumService.GetByNameAsync(name));
         }
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetAlbum(int id)
-        {
-            return Ok(await _albumBLL.GetByIdConnectionAsync(id));
-        }
+        //[HttpGet("{id}")]
+        //public async Task<IActionResult> GetAlbum(int id)
+        //{
+        //    return Ok(await _albumBLL.GetByIdConnectionAsync(id));
+        //}
         [HttpGet("getAlbumRandom")]
         public async Task<IActionResult> GetRandomAlbum()
         {
-            return Ok(await _albumBLL.GetRandomEntityConnection());
+            return Ok(await _albumService.GetRandomAsync());
         }
         [HttpPost("createAlbum")]
         public async Task<IActionResult> CreateAlbum(Album album)
         {
-            return Ok(await _albumBLL.CreateConnectionAsync(album));
+            return Ok(await _albumService.CreateAsync(album));
         }
         [HttpPatch("updateAlbum")]
         public async Task<IActionResult> UpdateAlbum(Album album)
         {
-            return Ok(await _albumBLL.UpdateConnectionAsync(album));
+            return Ok(await _albumService.UpdateAsync(album));
         }
         [HttpDelete("deleteAlbum")]
         public async Task<IActionResult> DeleteAlbum(int id)
         {
-            return Ok(await _albumBLL.DeleteConnectionAsync(id));
+            return Ok(await _albumService.DeleteAsync(id));
         }
     }
 }

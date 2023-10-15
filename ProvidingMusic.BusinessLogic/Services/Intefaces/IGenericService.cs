@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace ProvidingMusic.BusinessLogic.Services.Intefaces
 {
-    public interface IGenericService<TEntity> where TEntity : BaseEntity
+    public interface IGenericService<T> where T : BaseEntity
     {
-        Task<IEnumerable<TEntity>> GetAllConnectionAsync();
-        Task<TEntity> GetByIdConnectionAsync(int id);
-        Task<TEntity> CreateConnectionAsync(TEntity entity);
-        Task<TEntity> UpdateConnectionAsync(TEntity entity);
-        Task<bool> DeleteConnectionAsync(int id);
+        Task<IEnumerable<T>> GetAllAsync();
+        //Task<TEntity> GetByIdConnectionAsync(int id);
+        Task<T> CreateAsync(T entity);
+        Task<T> UpdateAsync(T entity);
+        Task<bool> DeleteAsync(int id);
     }
 }

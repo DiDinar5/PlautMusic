@@ -20,7 +20,7 @@ namespace ProvidingMusic.Database.Repositories
             _dbSet = _dbContext.Set<T>();
 
         }
-        public async Task<T> SearchByNameAsync(string name)
+        public async Task<T> GetByNameAsync(string name)
         {
             return await _dbSet.FirstAsync(x => EF.Functions.Like(x.Name.ToLower(), $"%{name}%"));
         }

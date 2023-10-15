@@ -1,4 +1,5 @@
 ﻿using ProvidingMusic.BusinessLogic.Services.Intefaces;
+using ProvidingMusic.Database.DTO;
 using ProvidingMusic.Database.IRepositories;
 using ProvidingMusic.Domain.Models;
 using System;
@@ -13,21 +14,28 @@ namespace ProvidingMusic.BusinessLogic.Services
     {
         private readonly IGenericRandomService<GroupMusic> _genericRandomBLL;
         private readonly IGenericSearchByNameService<GroupMusic> _genericSearchByNameService;
+        private readonly IGroupMusicRepository _groupMusicRepository;
         public GroupMusicService(IGenericRepository<GroupMusic> genericRandomRepository,
             IGenericRandomService<GroupMusic> genericRandomBLL,
-            IGenericSearchByNameService<GroupMusic> genericSearchByNameService): base(genericRandomRepository) 
+            IGenericSearchByNameService<GroupMusic> genericSearchByNameService,
+            IGroupMusicRepository groupMusicRepository): base(genericRandomRepository) 
         {
             _genericRandomBLL = genericRandomBLL;
             _genericSearchByNameService = genericSearchByNameService;
+            _groupMusicRepository = groupMusicRepository;
         }
-        public async Task<GroupMusic> GetRandomEntityConnection()
+        public async Task<GroupMusic> GetRandomAsync()
         {
-            return await _genericRandomBLL.GetRandomEntityConnection();
+            return await _genericRandomBLL.GetRandomAsync();
         }
-        public async Task<GroupMusic> GetEntityByName(string name)
+        public async Task<GroupMusic> GetByNameAsync(string name)
         {
-            return await _genericSearchByNameService.GetEntityByName(name);
+            return await _genericSearchByNameService.GetByNameAsync(name);
         }
 
+        public async Task<GroupMusicDTO?> GetAllInfoGroupMusic(int id)
+        {
+            return await _groupMusicRepository.GetAllInfoGroupMusic(id);
+        }
     }
 }

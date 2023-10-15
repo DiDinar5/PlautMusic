@@ -10,6 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.11">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -20,7 +21,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ProvidingMusic.BusinessLogic\ProvidingMusic.BusinessLogic.csproj" />
-    <ProjectReference Include="..\ProvidingMusic.Database\ProvidingMusic.Database.csproj" />
+    <ProjectReference Include="..\ProvidingMusic.Database\ProvidingMusic.DataBase.csproj" />
     <ProjectReference Include="..\ProvidingMusic.Domain\ProvidingMusic.Domain.csproj" />
   </ItemGroup>
 

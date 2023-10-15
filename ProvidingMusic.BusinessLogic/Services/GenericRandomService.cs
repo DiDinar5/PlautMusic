@@ -16,9 +16,9 @@ namespace ProvidingMusic.BusinessLogic.Services
         {
             _repository = repository;
         }
-        public async Task<T> GetRandomEntityConnection()
+        public async Task<T> GetRandomAsync()
         {
-            return await _repository.GetRandomEntityFromDbAsync();
+            return await _repository.GetRandomAsync();
         }
     }
 }
