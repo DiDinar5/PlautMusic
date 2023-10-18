@@ -8,7 +8,7 @@ using ProvidingMusic.Database.Context;
 
 #nullable disable
 
-namespace ProvidingMusic.Database.Migrations
+namespace ProvidingMusic.DataBase.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
     partial class ApplicationDBContextModelSnapshot : ModelSnapshot
@@ -30,7 +30,7 @@ namespace ProvidingMusic.Database.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("GroupMusicId")
+                    b.Property<int?>("BandId")
                         .HasColumnType("integer");
 
                     b.Property<string>("Name")
@@ -42,42 +42,12 @@ namespace ProvidingMusic.Database.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("GroupMusicId");
+                    b.HasIndex("BandId");
 
                     b.ToTable("Albums");
                 });
 
-            modelBuilder.Entity("ProvidingMusic.Domain.Models.GroupMember", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<int?>("GroupMusicId")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Position")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("GroupMusicId");
-
-                    b.ToTable("GroupMembers");
-                });
-
-            modelBuilder.Entity("ProvidingMusic.Domain.Models.GroupMusic", b =>
+            modelBuilder.Entity("ProvidingMusic.Domain.Models.Band", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -91,7 +61,37 @@ namespace ProvidingMusic.Database.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("GroupsMusic");
+                    b.ToTable("Bands");
+                });
+
+            modelBuilder.Entity("ProvidingMusic.Domain.Models.GroupMember", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("BandId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Position")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BandId");
+
+                    b.ToTable("GroupMembers");
                 });
 
             modelBuilder.Entity("ProvidingMusic.Domain.Models.Song", b =>
@@ -124,16 +124,16 @@ namespace ProvidingMusic.Database.Migrations
 
             modelBuilder.Entity("ProvidingMusic.Domain.Models.Album", b =>
                 {
-                    b.HasOne("ProvidingMusic.Domain.Models.GroupMusic", null)
-                        .WithMany("ListAlbums")
-                        .HasForeignKey("GroupMusicId");
+                    b.HasOne("ProvidingMusic.Domain.Models.Band", null)
+                        .WithMany("Albums")
+                        .HasForeignKey("BandId");
                 });
 
             modelBuilder.Entity("ProvidingMusic.Domain.Models.GroupMember", b =>
                 {
-                    b.HasOne("ProvidingMusic.Domain.Models.GroupMusic", null)
-                        .WithMany("ListGroupMembers")
-                        .HasForeignKey("GroupMusicId");
+                    b.HasOne("ProvidingMusic.Domain.Models.Band", null)
+                        .WithMany("GroupMembers")
+                        .HasForeignKey("BandId");
                 });
 
             modelBuilder.Entity("ProvidingMusic.Domain.Models.Song", b =>
@@ -148,11 +148,11 @@ namespace ProvidingMusic.Database.Migrations
                     b.Navigation("ListSongs");
                 });
 
-            modelBuilder.Entity("ProvidingMusic.Domain.Models.GroupMusic", b =>
+            modelBuilder.Entity("ProvidingMusic.Domain.Models.Band", b =>
                 {
-                    b.Navigation("ListAlbums");
+                    b.Navigation("Albums");
 
-                    b.Navigation("ListGroupMembers");
+                    b.Navigation("GroupMembers");
                 });
 #pragma warning restore 612, 618
         }

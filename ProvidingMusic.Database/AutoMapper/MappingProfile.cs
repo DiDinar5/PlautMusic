@@ -8,7 +8,7 @@ namespace ProvidingMusic.DataBase.AutoMapper
     {
         public MappingProfile()
         {
-            CreateMap<GroupMusic,GroupMusicDTO>().ReverseMap();
+            CreateMap<Band,BandDTO>().ReverseMap();
         }
     }
 }

@@ -2,11 +2,6 @@
 using ProvidingMusic.Database.Context;
 using ProvidingMusic.Database.IRepositories;
 using ProvidingMusic.Domain.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProvidingMusic.Database.Repositories
 {
@@ -18,7 +13,6 @@ namespace ProvidingMusic.Database.Repositories
         {
             _dbContext = dBContext;
             _dbSet = _dbContext.Set<T>();
-
         }
         public async Task<T> GetByNameAsync(string name)
         {

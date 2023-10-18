@@ -19,9 +19,9 @@ namespace ProvidingMusic.BusinessLogic.Services
         {
             return await _genericRandomBLL.GetRandomAsync();
         }
-        public async Task<GroupMember> GetGroupMemberByName(string name)
+        public async Task<GroupMember> GetGroupMemberByNameAsync(string name)
         {
-            return await _groupMemberRepository.SearchGroupMemberByNameAsync(name);
+            return await _groupMemberRepository.GetGroupMemberByNameAsync(name);
         }
     }
 }

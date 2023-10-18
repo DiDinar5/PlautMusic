@@ -1,12 +1,11 @@
-﻿using ProvidingMusic.Domain.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ProvidingMusic.Database.DTO;
+using ProvidingMusic.Domain.Models;
 
 namespace ProvidingMusic.BusinessLogic.Services.Intefaces
 {
     public interface ISongService : IGenericService<Song>,IGenericRandomService<Song>,IGenericSearchByNameService<Song>
-    {}
+    {
+        Task<IEnumerable<SongDTO>> GetLongSongs(string name);
+        Task<IEnumerable<SongDTO>> GetBestSongsFromAlbums(string bandName);
+    }
 }

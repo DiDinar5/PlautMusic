@@ -19,10 +19,6 @@ namespace ProvidingMusic.Database.Repositories
         {
             return await _dbSet.OrderBy(x => x.Id).ToListAsync();   
         }
-        //public virtual async Task<TEntity> GetByIdAsync(int id)
-        //{
-        //    return await _dbSet.FindAsync(id);
-        //}
         public async Task<TEntity> CreateAsync(TEntity entity)
         {
             await _dbSet.AddAsync(entity);

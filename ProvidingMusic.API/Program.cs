@@ -28,7 +28,7 @@ builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
 builder.Services.AddScoped<ApplicationDBContext>();
 
-builder.Services.AddScoped<IGroupMusicRepository, GroupMusicRepository>();
+builder.Services.AddScoped<IBandRepository, BandRepository>();
 builder.Services.AddScoped<ISongRepository, SongRepository>();
 builder.Services.AddScoped<IAlbumRepository, AlbumRepository>();
 builder.Services.AddScoped<IGroupMemberRepository, GroupMemberRepository>();
@@ -36,7 +36,7 @@ builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepositor
 builder.Services.AddScoped(typeof(IGenericRandomRepository<>), typeof(GenericRandomRepository<>));
 builder.Services.AddScoped(typeof(IGenericSearchByNameRepository<>), typeof(GenericSearchByNameRepository<>));
 
-builder.Services.AddScoped<IGroupMusicService, GroupMusicService>();
+builder.Services.AddScoped<IBandService, BandService>();
 builder.Services.AddScoped<ISongService, SongService>();
 builder.Services.AddScoped<IAlbumService, AlbumService>();
 builder.Services.AddScoped<IGroupMemberService, GroupMemberService>();

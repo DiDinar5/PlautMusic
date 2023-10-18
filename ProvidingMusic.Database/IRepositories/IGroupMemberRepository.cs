@@ -11,6 +11,6 @@ namespace ProvidingMusic.Database.IRepositories
     public interface IGroupMemberRepository: IGenericRepository<GroupMember>,
         IGenericRandomRepository<GroupMember>
     {
-        Task<GroupMember> SearchGroupMemberByNameAsync(string name);
+        Task<GroupMember> GetGroupMemberByNameAsync(string name);
     }
 }

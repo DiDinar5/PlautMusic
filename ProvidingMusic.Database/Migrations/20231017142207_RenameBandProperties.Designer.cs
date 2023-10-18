@@ -9,11 +9,11 @@ using ProvidingMusic.Database.Context;
 
 #nullable disable
 
-namespace ProvidingMusic.Database.Migrations
+namespace ProvidingMusic.DataBase.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20231009151753_initial3")]
-    partial class initial3
+    [Migration("20231017142207_RenameBandProperties")]
+    partial class RenameBandProperties
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,24 +33,38 @@ namespace ProvidingMusic.Database.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime>("DateCreate")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<int?>("GroupMusicId")
+                    b.Property<int?>("BandId")
                         .HasColumnType("integer");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("WorldRating")
+                    b.Property<int>("YearOfRelease")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("GroupMusicId");
+                    b.HasIndex("BandId");
 
                     b.ToTable("Albums");
+                });
+
+            modelBuilder.Entity("ProvidingMusic.Domain.Models.Band", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Bands");
                 });
 
             modelBuilder.Entity("ProvidingMusic.Domain.Models.GroupMember", b =>
@@ -61,55 +75,26 @@ namespace ProvidingMusic.Database.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime>("DateOfBirth")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<DateTime>("DateOfDeath")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<int?>("GroupMusicId")
+                    b.Property<int?>("BandId")
                         .HasColumnType("integer");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<string>("LastName")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Nickname")
+                    b.Property<string>("Position")
                         .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("GroupMusicId");
+                    b.HasIndex("BandId");
 
                     b.ToTable("GroupMembers");
-                });
-
-            modelBuilder.Entity("ProvidingMusic.Domain.Models.GroupMusic", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("DateOfFoundation")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<int>("WorldRating")
-                        .HasColumnType("integer");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("GroupsMusic");
                 });
 
             modelBuilder.Entity("ProvidingMusic.Domain.Models.Song", b =>
@@ -127,14 +112,10 @@ namespace ProvidingMusic.Database.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("Performers")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<int>("SequenceNumber")
+                        .HasColumnType("integer");
 
-                    b.Property<double>("SongDuration")
-                        .HasColumnType("double precision");
-
-                    b.Property<int>("WorldRating")
+                    b.Property<int>("SongDuration")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
@@ -146,31 +127,31 @@ namespace ProvidingMusic.Database.Migrations
 
             modelBuilder.Entity("ProvidingMusic.Domain.Models.Album", b =>
                 {
-                    b.HasOne("ProvidingMusic.Domain.Models.GroupMusic", null)
+                    b.HasOne("ProvidingMusic.Domain.Models.Band", null)
                         .WithMany("Albums")
-                        .HasForeignKey("GroupMusicId");
+                        .HasForeignKey("BandId");
                 });
 
             modelBuilder.Entity("ProvidingMusic.Domain.Models.GroupMember", b =>
                 {
-                    b.HasOne("ProvidingMusic.Domain.Models.GroupMusic", null)
+                    b.HasOne("ProvidingMusic.Domain.Models.Band", null)
                         .WithMany("GroupMembers")
-                        .HasForeignKey("GroupMusicId");
+                        .HasForeignKey("BandId");
                 });
 
             modelBuilder.Entity("ProvidingMusic.Domain.Models.Song", b =>
                 {
                     b.HasOne("ProvidingMusic.Domain.Models.Album", null)
-                        .WithMany("Songs")
+                        .WithMany("ListSongs")
                         .HasForeignKey("AlbumId");
                 });
 
             modelBuilder.Entity("ProvidingMusic.Domain.Models.Album", b =>
                 {
-                    b.Navigation("Songs");
+                    b.Navigation("ListSongs");
                 });
 
-            modelBuilder.Entity("ProvidingMusic.Domain.Models.GroupMusic", b =>
+            modelBuilder.Entity("ProvidingMusic.Domain.Models.Band", b =>
                 {
                     b.Navigation("Albums");
 

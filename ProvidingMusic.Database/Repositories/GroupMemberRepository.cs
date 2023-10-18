@@ -2,11 +2,6 @@
 using ProvidingMusic.Database.Context;
 using ProvidingMusic.Database.IRepositories;
 using ProvidingMusic.Domain.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProvidingMusic.Database.Repositories
 {
@@ -23,7 +18,7 @@ namespace ProvidingMusic.Database.Repositories
             return await _genericRandomRepository.GetRandomAsync();
         }
 
-        public async Task<GroupMember> SearchGroupMemberByNameAsync(string name)
+        public async Task<GroupMember> GetGroupMemberByNameAsync(string name)
         {
             return await _dbContext.GroupMembers.FirstAsync(x => EF.Functions.Like(x.FirstName.ToLower(), $"%{name}%"));
         }

@@ -33,7 +33,7 @@ namespace ProvidingMusic.API.Controllers
         public async Task<IActionResult> GetGroupMemberByName(string name)
         {
 
-            return Ok(await _IgroupMemberService.GetGroupMemberByName(name));
+            return Ok(await _IgroupMemberService.GetGroupMemberByNameAsync(name));
         }
         [HttpGet("getRandomGroupMember")]
         public async Task<IActionResult> GetGroupMemberRandom()
