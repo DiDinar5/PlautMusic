@@ -22,6 +22,11 @@ namespace ProvidingMusic.API.Controllers
             }
             return Ok(await _albumService.GetAllAsync());
         }
+        [HttpGet("getAlbumsInfo")]
+        public async Task<IActionResult> GetAlbumInfo(string name)
+        {
+            return Ok(await _albumService.GetAlbumInfo(name));
+        }
         [HttpGet("getAlbumByName")]
         public async Task<IActionResult> GetAlbumByName(string name)
         {

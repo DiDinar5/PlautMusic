@@ -1,9 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ProvidingMusic.Database.Context;
-using ProvidingMusic.Database.DTO;
 using ProvidingMusic.Database.IRepositories;
 using ProvidingMusic.Domain.Models;
-using System.Xml.Linq;
 
 namespace ProvidingMusic.Database.Repositories
 {
@@ -18,7 +16,7 @@ namespace ProvidingMusic.Database.Repositories
             _randomRepository = randomRepository;
             _genericSearchByNameRepository = genericSearchByNameRepository;
         }
-        public async Task<Song> GetRandomAsync()
+        public async Task<Song?> GetRandomAsync()
         {
             return await _randomRepository.GetRandomAsync();
         }
@@ -28,54 +26,36 @@ namespace ProvidingMusic.Database.Repositories
             return await _genericSearchByNameRepository.GetByNameAsync(name);
         }
 
-        public async Task<IEnumerable<SongDTO>> GetLongSongs(string nameAlbum)
+        public async Task<IEnumerable<Song>> GetLongSongs(string nameAlbum)
         {
-            var songs = (await _dbContext.Albums.Include(s=>s.ListSongs).Select(s => new{ s.ListSongs, s.Name})
+            var songs = (await _dbContext.Albums
+                .Include(s => s.ListSongs)
+                .Select(s => new
+                {
+                    s.ListSongs,
+                    s.Name
+                })
                 .FirstOrDefaultAsync(x => EF.Functions.Like(x.Name.ToLower(), $"%{nameAlbum}%")))?.ListSongs;
 
-            if (songs is null)
-                return Enumerable.Empty<SongDTO>();
-
-            var songDTO = songs.Select(x => new SongDTO()
-            {
-                Id = x.Id,
-                Name = x.Name,
-                SequenceNumber = x.SequenceNumber,
-                SongDuration = x.SongDuration,
-            })
-                .OrderByDescending(s=>s.SongDuration)
-                .Take(5);
-
-            return songDTO;
+            return songs;
         }
 
-        public async Task<IEnumerable<SongDTO>>? GetBestSongsFromAlbums(string bandName)
+        public async Task<IEnumerable<Song>>? GetBestSongsFromAlbums(string bandName)
         {
             var bandEntity = await _dbContext.Bands
-                .Include(b => b.Albums)
-                .ThenInclude(a => a.ListSongs)
-                .FirstOrDefaultAsync(x => EF.Functions.Like(x.Name.ToLower(), $"%{bandName}%"));
+               .Include(b => b.Albums)
+               .ThenInclude(a => a.ListSongs)
+               .Where(x => EF.Functions.Like(x.Name.ToLower(), $"%{bandName}%"))
+               .SelectMany(b => b.Albums.SelectMany(a => a.ListSongs))
+               .Where(s => s.SequenceNumber == 1)
+               .ToListAsync();
 
-            if (bandEntity is null)
-            {
-                return null;
-            }
+            return bandEntity; 
+        }
 
-            var listSong =  bandEntity.Albums
-               .SelectMany(a => a.ListSongs)
-               .OrderBy(a => a.SequenceNumber)
-               .ThenByDescending(a => a.Name.Length)
-               .Take(2).ToList();
-
-            var bestSong = listSong.Select(s => new SongDTO()
-            {
-                Id = s.Id,
-                Name = s.Name,
-                SequenceNumber = s.SequenceNumber,
-                SongDuration = s.SongDuration
-            });
-
-            return bestSong;
+        public Song MapSong(int id)
+        {
+            return _dbContext.Songs.Find(id);
         }
     }
 }

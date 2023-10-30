@@ -9,5 +9,7 @@ namespace ProvidingMusic.Domain.Models
 
         [Required]
         public int SongDuration { get; set; }
+
+        public int AlbumId { get; set; }
     }
 }

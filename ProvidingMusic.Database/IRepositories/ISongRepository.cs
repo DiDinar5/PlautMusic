@@ -5,8 +5,9 @@ namespace ProvidingMusic.Database.IRepositories
 {
     public interface ISongRepository: IGenericRepository<Song>,IGenericRandomRepository<Song>,IGenericSearchByNameRepository<Song>
     {
-        Task<IEnumerable<SongDTO>>? GetLongSongs(string nameAlbum);
-        Task<IEnumerable<SongDTO>>? GetBestSongsFromAlbums(string bandName);
+        //Task<IEnumerable<Song>>? GetLongSongs(string nameAlbum);
+        Task<IEnumerable<Song>>? GetBestSongsFromAlbums(string bandName);
+        Song MapSong(int id);
     }
 }
 

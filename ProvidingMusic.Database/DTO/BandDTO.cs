@@ -9,5 +9,7 @@
         public List<GroupMemberDTO> ListGroupMembers { get; set; }
 
         public List<AlbumDTO> ListAlbums { get; set;}
+
+        public string? Temp {  get; set; }
     }
 }

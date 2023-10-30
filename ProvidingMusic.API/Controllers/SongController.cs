@@ -40,16 +40,22 @@ namespace ProvidingMusic.API.Controllers
         {
             return Ok(await _songService.GetRandomAsync());
         }
-        [HttpGet("getLongSongs")]
-        public async Task<IActionResult> GetLongSong(string nameAlbum)
-        {
-            return Ok(await _songService.GetLongSongs(nameAlbum));
-        }
+        //[HttpGet("getLongSongs")]
+        //public async Task<IActionResult> GetLongSong(string nameAlbum)
+        //{
+        //    return Ok(await _songService.GetLongSongs(nameAlbum));
+        //}
         [HttpGet("getBestSongs")]
         public async Task<IActionResult> GetBestSongs(string bandName)
         {
             return Ok(await _songService.GetBestSongsFromAlbums(bandName));
         }
+        [HttpGet("mapTestSong")]
+        public IActionResult MapSongContr(int id)
+        {
+            return Ok(_songService.MapSong(id));
+        }
+
         /// <summary>
         /// Метод принимает на вход наименование песни, и возвращает песню или похожее наименование в случае ошибки ввода
         /// </summary>

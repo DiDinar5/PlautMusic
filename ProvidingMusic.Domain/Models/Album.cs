@@ -9,5 +9,7 @@ namespace ProvidingMusic.Domain.Models
 
         [Required]
         public List<Song> ListSongs { get; set; } = new();
+
+        public int BandId { get; set; }
     }
 }

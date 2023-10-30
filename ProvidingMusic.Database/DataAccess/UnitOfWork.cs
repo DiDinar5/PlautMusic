@@ -1,19 +1,13 @@
 ﻿using ProvidingMusic.Database.Context;
 using ProvidingMusic.Database.Repositories;
 using ProvidingMusic.Domain.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProvidingMusic.Database.DataAccess
 {
     public class UnitOfWork: IDisposable
     {
-        private readonly ApplicationDBContext _dbContext;
-        private GenericRepository<Song> _songRepository;
-        private readonly GenericRepository<Album> _albumRepository;
+        private readonly ApplicationDBContext? _dbContext;
+        private GenericRepository<Song>? _songRepository;
 
         public GenericRepository<Song> SongRepositoryUOW
         {
@@ -21,14 +15,14 @@ namespace ProvidingMusic.Database.DataAccess
             {
                 if (this._songRepository == null)
                 {
-                    this._songRepository = new GenericRepository<Song>(_dbContext);
+                    this._songRepository = new GenericRepository<Song>(_dbContext!);
                 }
                 return _songRepository;
             }
         }
         public void Save()
         {
-            _dbContext.SaveChanges();
+            _dbContext!.SaveChanges();
         }
         private bool disposed = false;
         protected virtual void Dispose(bool disposing)
@@ -37,7 +31,7 @@ namespace ProvidingMusic.Database.DataAccess
             {
                 if (disposing)
                 {
-                    _dbContext.Dispose();
+                    _dbContext!.Dispose();
                 }
             }
             this.disposed = true;

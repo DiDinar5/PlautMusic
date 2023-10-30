@@ -32,10 +32,10 @@ namespace ProvidingMusic.Database.Repositories
             await SaveAsync();        //_dbContext.Entry(entity).State = EntityState.Modified;
             return entity;
         }
-        public virtual async Task<bool> DeleteAsync(int id)
+        public virtual async Task<bool> DeleteAsync(int? id)
         {
-            TEntity entity = _dbSet.Find(id);
-            _dbSet.Remove(entity);
+            TEntity? entity = _dbSet.Find(id);
+            _dbSet.Remove(entity!);
             await SaveAsync();
             return true;    
 

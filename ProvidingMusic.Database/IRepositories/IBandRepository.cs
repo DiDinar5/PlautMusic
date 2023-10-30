@@ -8,7 +8,7 @@ namespace ProvidingMusic.Database.IRepositories
         IGenericRandomRepository<Band>,
         IGenericSearchByNameRepository<Band>
     {
-        Task<BandDTO?> GetAllInfo(int id);
+        Task<Band?> GetAllInfo(int id);
         //Task<bool> DeleteAllInfo(int id);
     }
 }

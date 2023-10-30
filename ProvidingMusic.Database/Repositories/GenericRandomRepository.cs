@@ -14,7 +14,7 @@ namespace ProvidingMusic.Database.Repositories
             _dbContext = dBContext;
             _dbSet = _dbContext.Set<T>();
         }
-        public async Task<T> GetRandomAsync()
+        public async Task<T?> GetRandomAsync()
         {
             Random random = new Random();
             var randomIndex = random.Next(0, _dbSet.Count());

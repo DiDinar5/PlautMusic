@@ -8,7 +8,7 @@ namespace ProvidingMusic.Database.IRepositories
         Task<IEnumerable<TEntity>> GetAllAsync();
         Task<TEntity> CreateAsync(TEntity entity);
         Task<TEntity> UpdateAsync(TEntity entity);
-        Task<bool> DeleteAsync(int id);
+        Task<bool> DeleteAsync(int? id);
         Task SaveAsync();
     }
 }

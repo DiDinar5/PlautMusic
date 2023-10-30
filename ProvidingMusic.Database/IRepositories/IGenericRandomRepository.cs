@@ -9,6 +9,6 @@ namespace ProvidingMusic.Database.IRepositories
 {
     public interface IGenericRandomRepository<TEntity> where TEntity : BaseEntity
     {
-        Task<TEntity> GetRandomAsync();
+        Task<TEntity?> GetRandomAsync();
     }
 }

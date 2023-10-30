@@ -1,12 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ProvidingMusic.Database.Context;
 using ProvidingMusic.Database.IRepositories;
+using ProvidingMusic.DataBase.DTO;
 using ProvidingMusic.Domain.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProvidingMusic.Database.Repositories
 {
@@ -28,6 +24,31 @@ namespace ProvidingMusic.Database.Repositories
         public async Task<Album> GetByNameAsync(string name)
         {
             return await _genericSearchByNameRepository.GetByNameAsync(name);
+        }
+        public async Task<IEnumerable<GetAlbumInfoResponseDTO>> GetAlbum(string bandName)
+        {
+
+            var albumsInfo = await _dbContext.Bands
+                .Include(b => b.Albums)
+                .ThenInclude(a => a.ListSongs)
+                .Where(x => EF.Functions.Like(x.Name.ToLower(), $"%{bandName}%"))
+                .SelectMany(b => b.Albums)
+                .GroupBy(a => a.Name)
+                .Select(a => new
+                {
+                    Name = a.Key,
+                    NumberOfSongs = a.SelectMany(alb => alb.ListSongs).Count(),
+                    AvgSon = a.SelectMany(alb => alb.ListSongs).Average(s=>s.SongDuration)
+                }).ToListAsync();
+
+            var albumsInfoDTO = albumsInfo.Select(a => new GetAlbumInfoResponseDTO()
+            {
+                Name = a.Name,
+                NumberOfSongs = a.NumberOfSongs,
+                AverageSongDuration = a.AvgSon
+            });
+
+            return albumsInfoDTO;
         }
     }
 }
