@@ -13,5 +13,6 @@ namespace ProvidingMusic.Database.IRepositories
         IGenericSearchByNameRepository<Album>
     {
         Task<IEnumerable<GetAlbumInfoResponseDTO>> GetAlbum(string bandName);
+        string GetSongsFromAlbum(int id);
     }
 }

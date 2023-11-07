@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ProvidingMusic.Database.Context;
 using ProvidingMusic.Database.IRepositories;
+using ProvidingMusic.DataBase.Extensions;
 using ProvidingMusic.Domain.Models;
 
 namespace ProvidingMusic.Database.Repositories
@@ -57,5 +58,11 @@ namespace ProvidingMusic.Database.Repositories
         {
             return _dbContext.Songs.Find(id);
         }
+        public string GetString(int id)
+        {
+            var songEntity = _dbContext.Songs.Find(id);
+            return songEntity.GetStringEntity(id);
+        }
     }
+   
 }

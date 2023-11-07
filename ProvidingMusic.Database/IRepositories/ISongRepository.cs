@@ -8,6 +8,8 @@ namespace ProvidingMusic.Database.IRepositories
         //Task<IEnumerable<Song>>? GetLongSongs(string nameAlbum);
         Task<IEnumerable<Song>>? GetBestSongsFromAlbums(string bandName);
         Song MapSong(int id);
+
+        string GetString(int id);
     }
 }
 

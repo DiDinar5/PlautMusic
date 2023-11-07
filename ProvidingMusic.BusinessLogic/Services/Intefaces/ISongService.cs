@@ -8,5 +8,7 @@ namespace ProvidingMusic.BusinessLogic.Services.Intefaces
         //Task<IEnumerable<SongDTO>> GetLongSongs(string name);
         Task<IEnumerable<SongDTO?>> GetBestSongsFromAlbums(string? bandName);
         SongDTO MapSong(int id);
+
+        string GetString(int id);
     }
 }

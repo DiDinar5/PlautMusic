@@ -14,5 +14,8 @@ namespace ProvidingMusic.BusinessLogic.Services.Intefaces
     {
         Task<IEnumerable<GetAlbumInfoResponseDTO>> GetAlbumInfo(string bandName);
 
+        string GetSongsFromAlbum(int id);
+
+
     }
 }

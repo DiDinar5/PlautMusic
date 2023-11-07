@@ -66,6 +66,11 @@ namespace ProvidingMusic.BusinessLogic.Services
             return await _genericRandomBLL.GetRandomAsync();
         }
 
+        public string GetString(int id)
+        {
+            return _songRepository.GetString(id);
+        }
+
         public SongDTO MapSong(int id)
         {
             var song = _songRepository.MapSong(id);

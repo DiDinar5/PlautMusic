@@ -27,6 +27,15 @@ namespace ProvidingMusic.API.Controllers
         {
             return Ok(await _albumService.GetAlbumInfo(name));
         }
+
+
+        [HttpGet("getSongsFromAlbum")]
+        public IActionResult GetSongsFromAlbum(int id)
+        {
+            return Ok(_albumService.GetSongsFromAlbum(id));
+        }
+
+
         [HttpGet("getAlbumByName")]
         public async Task<IActionResult> GetAlbumByName(string name)
         {

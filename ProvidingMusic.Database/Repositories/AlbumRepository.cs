@@ -2,6 +2,7 @@
 using ProvidingMusic.Database.Context;
 using ProvidingMusic.Database.IRepositories;
 using ProvidingMusic.DataBase.DTO;
+using ProvidingMusic.DataBase.Extensions;
 using ProvidingMusic.Domain.Models;
 
 namespace ProvidingMusic.Database.Repositories
@@ -49,6 +50,13 @@ namespace ProvidingMusic.Database.Repositories
             });
 
             return albumsInfoDTO;
+        }
+        public string GetSongsFromAlbum(int id)
+        {
+            var albumEntity = _dbContext.Albums
+                .Include(a=>a.ListSongs)
+                .FirstOrDefault(a=>a.Id==id);
+            return albumEntity.GetSongsFromAlbum(id);
         }
     }
 }

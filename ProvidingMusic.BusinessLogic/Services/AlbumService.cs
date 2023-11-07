@@ -39,5 +39,10 @@ namespace ProvidingMusic.BusinessLogic.Services
         {
             return await _albumRepository.GetAlbum(bandName);
         }
+
+        public string GetSongsFromAlbum(int id)
+        {
+            return _albumRepository.GetSongsFromAlbum(id);
+        }
     }
 }

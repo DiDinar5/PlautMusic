@@ -55,6 +55,11 @@ namespace ProvidingMusic.API.Controllers
         {
             return Ok(_songService.MapSong(id));
         }
+        [HttpGet("getString")]
+        public IActionResult GetString(int id)
+        {
+            return Ok(_songService.GetString(id));
+        }
 
         /// <summary>
         /// Метод принимает на вход наименование песни, и возвращает песню или похожее наименование в случае ошибки ввода
