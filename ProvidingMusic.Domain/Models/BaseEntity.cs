@@ -1,6 +1,8 @@
-﻿namespace ProvidingMusic.Domain.Models
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace ProvidingMusic.Domain.Models
 {
-    public class BaseEntity
+    public class BaseEntity 
     {
         public int Id { get; set; }
     }

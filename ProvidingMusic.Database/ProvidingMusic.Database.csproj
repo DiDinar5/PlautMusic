@@ -20,11 +20,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ProvidingMusic.Domain\ProvidingMusic.Domain.csproj" />
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Migrations\" />
+    <ProjectReference Include="..\ProvidingMusic.Domain\ProvidingMusic.Domain.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,0 +1,30 @@
+﻿[
+  {
+    "name": "Group",
+    "groupMembers": [
+      {
+        "firstName": "Ben",
+        "lastName": "Bobovich",
+        "position": "Guitar"
+      }
+    ],
+    "albums": [
+      {
+        "name": "Origins",
+        "yearOfRelease": 2002,
+        "listSongs": [
+          {
+            "name": "FirstSong",
+            "sequenceNumber": 1,
+            "songDuration": 232
+          },
+          {
+            "name": "SecondSong",
+            "sequenceNumber": 2,
+            "songDuration": 332
+          }
+        ]
+      }
+    ]
+  }
+]

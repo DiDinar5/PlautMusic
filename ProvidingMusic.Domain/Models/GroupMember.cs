@@ -1,4 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
+using System.Xml.Linq;
 
 namespace ProvidingMusic.Domain.Models
 {
@@ -12,5 +14,23 @@ namespace ProvidingMusic.Domain.Models
 
         [Required]
         public string Position { get; set; }
+
+        public override bool Equals(Object other)
+        {
+            if ((other == null) || !this.GetType().Equals(other.GetType()))
+            {
+                return false;
+            }
+            GroupMember otherMember = (GroupMember)other;
+            return (otherMember.FirstName==FirstName && 
+                otherMember.LastName==LastName &&
+                otherMember.Position == Position);
+        }
+
+        public override int GetHashCode()
+        {
+            int hash = FirstName.GetHashCode() ^ LastName.GetHashCode() ^ Position.GetHashCode();
+            return hash.GetHashCode();
+        }
     }
 }

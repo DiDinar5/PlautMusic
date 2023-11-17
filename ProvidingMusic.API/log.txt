@@ -1,0 +1,667 @@
+Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (8ms).Initialized DbCommand for 'ExecuteReader' (25ms).Executing DbCommand [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?', @p3='?' (DbType = Int32), @p4='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Songs" ("Id", "AlbumId", "Name", "SequenceNumber", "SongDuration")
+VALUES (@p0, @p1, @p2, @p3, @p4);Failed executing DbCommand (131ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?', @p3='?' (DbType = Int32), @p4='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Songs" ("Id", "AlbumId", "Name", "SequenceNumber", "SongDuration")
+VALUES (@p0, @p1, @p2, @p3, @p4);Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (0ms).Initialized DbCommand for 'ExecuteReader' (1ms).Executing DbCommand [Parameters=[@p0='?' (DbType = Int32), @p1='?', @p2='?' (DbType = Int32), @p3='?', @p4='?' (DbType = Int32), @p5='?' (DbType = Int32), @p6='?', @p7='?', @p8='?'], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Bands" ("Id", "Name")
+VALUES (@p0, @p1);
+INSERT INTO "Albums" ("BandId", "Name", "YearOfRelease")
+VALUES (@p2, @p3, @p4)
+RETURNING "Id";
+INSERT INTO "GroupMembers" ("BandId", "FirstName", "LastName", "Position")
+VALUES (@p5, @p6, @p7, @p8)
+RETURNING "Id";Failed executing DbCommand (22ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?', @p2='?' (DbType = Int32), @p3='?', @p4='?' (DbType = Int32), @p5='?' (DbType = Int32), @p6='?', @p7='?', @p8='?'], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Bands" ("Id", "Name")
+VALUES (@p0, @p1);
+INSERT INTO "Albums" ("BandId", "Name", "YearOfRelease")
+VALUES (@p2, @p3, @p4)
+RETURNING "Id";
+INSERT INTO "GroupMembers" ("BandId", "FirstName", "LastName", "Position")
+VALUES (@p5, @p6, @p7, @p8)
+RETURNING "Id";Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (0ms).Initialized DbCommand for 'ExecuteReader' (1ms).Executing DbCommand [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?', @p3='?' (DbType = Int32), @p4='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Songs" ("Id", "AlbumId", "Name", "SequenceNumber", "SongDuration")
+VALUES (@p0, @p1, @p2, @p3, @p4);Executed DbCommand (10ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?', @p3='?' (DbType = Int32), @p4='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Songs" ("Id", "AlbumId", "Name", "SequenceNumber", "SongDuration")
+VALUES (@p0, @p1, @p2, @p3, @p4);Closing data reader to 'MusicWorld' on server 'tcp://localhost:5432'.A data reader for 'MusicWorld' on server 'tcp://localhost:5432' is being disposed after spending 32ms reading results.Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (20ms).Initialized DbCommand for 'ExecuteReader' (22ms).Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."BandId", a."Name", a."YearOfRelease"
+FROM "Albums" AS a
+ORDER BY a."Id"Executed DbCommand (43ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."BandId", a."Name", a."YearOfRelease"
+FROM "Albums" AS a
+ORDER BY a."Id"Closing data reader to 'MusicWorld' on server 'tcp://localhost:5432'.A data reader for 'MusicWorld' on server 'tcp://localhost:5432' is being disposed after spending 43ms reading results.Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (0ms).Initialized DbCommand for 'ExecuteReader' (2ms).Executing DbCommand [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT s."Id", s."AlbumId", s."Name", s."SequenceNumber", s."SongDuration"
+FROM "Songs" AS s
+WHERE s."Id" = @__p_0
+LIMIT 1Executed DbCommand (16ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT s."Id", s."AlbumId", s."Name", s."SequenceNumber", s."SongDuration"
+FROM "Songs" AS s
+WHERE s."Id" = @__p_0
+LIMIT 1Closing data reader to 'MusicWorld' on server 'tcp://localhost:5432'.A data reader for 'MusicWorld' on server 'tcp://localhost:5432' is being disposed after spending 9ms reading results.Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (0ms).Initialized DbCommand for 'ExecuteReader' (1ms).Executing DbCommand [Parameters=[@p0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+DELETE FROM "Songs"
+WHERE "Id" = @p0;Executed DbCommand (8ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+DELETE FROM "Songs"
+WHERE "Id" = @p0;Closing data reader to 'MusicWorld' on server 'tcp://localhost:5432'.A data reader for 'MusicWorld' on server 'tcp://localhost:5432' is being disposed after spending 4ms reading results.Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (12ms).Initialized DbCommand for 'ExecuteReader' (19ms).Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (13ms).Initialized DbCommand for 'ExecuteReader' (18ms).Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (1ms).Initialized DbCommand for 'ExecuteReader' (4ms).Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (1ms).Initialized DbCommand for 'ExecuteReader' (6ms).Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (117ms).Initialized DbCommand for 'ExecuteReader' (123ms).Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT b."Id", b."Name"
+FROM "Bands" AS b
+ORDER BY b."Id"Executed DbCommand (105ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT b."Id", b."Name"
+FROM "Bands" AS b
+ORDER BY b."Id"Closing data reader to 'MusicWorld' on server 'tcp://localhost:5432'.A data reader for 'MusicWorld' on server 'tcp://localhost:5432' is being disposed after spending 151ms reading results.Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (11ms).Initialized DbCommand for 'ExecuteReader' (18ms).Executing DbCommand [Parameters=[@p0='?'], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Bands" ("Name")
+VALUES (@p0)
+RETURNING "Id";Executed DbCommand (68ms) [Parameters=[@p0='?'], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Bands" ("Name")
+VALUES (@p0)
+RETURNING "Id";Closing data reader to 'MusicWorld' on server 'tcp://localhost:5432'.A data reader for 'MusicWorld' on server 'tcp://localhost:5432' is being disposed after spending 40ms reading results.Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (20ms).Initialized DbCommand for 'ExecuteReader' (35ms).Executing DbCommand [Parameters=[@p0='?'], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Bands" ("Name")
+VALUES (@p0)
+RETURNING "Id";Executed DbCommand (89ms) [Parameters=[@p0='?'], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Bands" ("Name")
+VALUES (@p0)
+RETURNING "Id";Closing data reader to 'MusicWorld' on server 'tcp://localhost:5432'.A data reader for 'MusicWorld' on server 'tcp://localhost:5432' is being disposed after spending 34ms reading results.Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (12ms).Initialized DbCommand for 'ExecuteReader' (21ms).Executing DbCommand [Parameters=[@p0='?'], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Bands" ("Name")
+VALUES (@p0)
+RETURNING "Id";Executed DbCommand (97ms) [Parameters=[@p0='?'], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Bands" ("Name")
+VALUES (@p0)
+RETURNING "Id";Closing data reader to 'MusicWorld' on server 'tcp://localhost:5432'.A data reader for 'MusicWorld' on server 'tcp://localhost:5432' is being disposed after spending 54ms reading results.Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (11ms).Initialized DbCommand for 'ExecuteReader' (20ms).Executing DbCommand [Parameters=[@p0='?'], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Bands" ("Name")
+VALUES (@p0)
+RETURNING "Id";Executed DbCommand (76ms) [Parameters=[@p0='?'], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Bands" ("Name")
+VALUES (@p0)
+RETURNING "Id";Closing data reader to 'MusicWorld' on server 'tcp://localhost:5432'.A data reader for 'MusicWorld' on server 'tcp://localhost:5432' is being disposed after spending 37ms reading results.Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (9ms).Initialized DbCommand for 'ExecuteReader' (17ms).Executing DbCommand [Parameters=[@p0='?'], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Bands" ("Name")
+VALUES (@p0)
+RETURNING "Id";Executed DbCommand (104ms) [Parameters=[@p0='?'], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Bands" ("Name")
+VALUES (@p0)
+RETURNING "Id";Closing data reader to 'MusicWorld' on server 'tcp://localhost:5432'.A data reader for 'MusicWorld' on server 'tcp://localhost:5432' is being disposed after spending 52ms reading results.Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (152ms).Initialized DbCommand for 'ExecuteReader' (161ms).Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT b."Id", b."Name"
+FROM "Bands" AS b
+ORDER BY b."Id"Executed DbCommand (99ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT b."Id", b."Name"
+FROM "Bands" AS b
+ORDER BY b."Id"Closing data reader to 'MusicWorld' on server 'tcp://localhost:5432'.A data reader for 'MusicWorld' on server 'tcp://localhost:5432' is being disposed after spending 114ms reading results.Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (40ms).Initialized DbCommand for 'ExecuteReader' (48ms).Executing DbCommand [Parameters=[@__Format_1='?'], CommandType='Text', CommandTimeout='30']
+SELECT b."Id", b."Name"
+FROM "Bands" AS b
+WHERE lower(b."Name") LIKE @__Format_1 ESCAPE ''
+LIMIT 1Executed DbCommand (80ms) [Parameters=[@__Format_1='?'], CommandType='Text', CommandTimeout='30']
+SELECT b."Id", b."Name"
+FROM "Bands" AS b
+WHERE lower(b."Name") LIKE @__Format_1 ESCAPE ''
+LIMIT 1Closing data reader to 'MusicWorld' on server 'tcp://localhost:5432'.A data reader for 'MusicWorld' on server 'tcp://localhost:5432' is being disposed after spending 60ms reading results.Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (200ms).Initialized DbCommand for 'ExecuteReader' (216ms).Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT b."Id", b."Name"
+FROM "Bands" AS bExecuted DbCommand (197ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT b."Id", b."Name"
+FROM "Bands" AS bClosing data reader to 'MusicWorld' on server 'tcp://localhost:5432'.A data reader for 'MusicWorld' on server 'tcp://localhost:5432' is being disposed after spending 252ms reading results.Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (204ms).Initialized DbCommand for 'ExecuteReader' (220ms).Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT g."Id", g."BandId", g."FirstName", g."LastName", g."Position"
+FROM "GroupMembers" AS gExecuted DbCommand (189ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT g."Id", g."BandId", g."FirstName", g."LastName", g."Position"
+FROM "GroupMembers" AS gClosing data reader to 'MusicWorld' on server 'tcp://localhost:5432'.A data reader for 'MusicWorld' on server 'tcp://localhost:5432' is being disposed after spending 236ms reading results.Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (2ms).Initialized DbCommand for 'ExecuteReader' (6ms).Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT s."Id", s."AlbumId", s."Name", s."SequenceNumber", s."SongDuration"
+FROM "Songs" AS sExecuted DbCommand (35ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT s."Id", s."AlbumId", s."Name", s."SequenceNumber", s."SongDuration"
+FROM "Songs" AS sClosing data reader to 'MusicWorld' on server 'tcp://localhost:5432'.A data reader for 'MusicWorld' on server 'tcp://localhost:5432' is being disposed after spending 30ms reading results.Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (299ms).Initialized DbCommand for 'ExecuteReader' (306ms).Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT b."Id", b."Name"
+FROM "Bands" AS bExecuted DbCommand (107ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT b."Id", b."Name"
+FROM "Bands" AS bClosing data reader to 'MusicWorld' on server 'tcp://localhost:5432'.A data reader for 'MusicWorld' on server 'tcp://localhost:5432' is being disposed after spending 85ms reading results.Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (1ms).Initialized DbCommand for 'ExecuteReader' (1ms).Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."BandId", a."Name", a."YearOfRelease"
+FROM "Albums" AS aExecuted DbCommand (14ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."BandId", a."Name", a."YearOfRelease"
+FROM "Albums" AS aClosing data reader to 'MusicWorld' on server 'tcp://localhost:5432'.A data reader for 'MusicWorld' on server 'tcp://localhost:5432' is being disposed after spending 21ms reading results.Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (1ms).Initialized DbCommand for 'ExecuteReader' (1ms).Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT g."Id", g."BandId", g."FirstName", g."LastName", g."Position"
+FROM "GroupMembers" AS gExecuted DbCommand (12ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT g."Id", g."BandId", g."FirstName", g."LastName", g."Position"
+FROM "GroupMembers" AS gClosing data reader to 'MusicWorld' on server 'tcp://localhost:5432'.A data reader for 'MusicWorld' on server 'tcp://localhost:5432' is being disposed after spending 23ms reading results.Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (1ms).Initialized DbCommand for 'ExecuteReader' (2ms).Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT s."Id", s."AlbumId", s."Name", s."SequenceNumber", s."SongDuration"
+FROM "Songs" AS sExecuted DbCommand (28ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT s."Id", s."AlbumId", s."Name", s."SequenceNumber", s."SongDuration"
+FROM "Songs" AS sClosing data reader to 'MusicWorld' on server 'tcp://localhost:5432'.A data reader for 'MusicWorld' on server 'tcp://localhost:5432' is being disposed after spending 9ms reading results.Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (108ms).Initialized DbCommand for 'ExecuteReader' (115ms).Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT s."Id", s."AlbumId", s."Name", s."SequenceNumber", s."SongDuration"
+FROM "Songs" AS sExecuted DbCommand (108ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT s."Id", s."AlbumId", s."Name", s."SequenceNumber", s."SongDuration"
+FROM "Songs" AS sClosing data reader to 'MusicWorld' on server 'tcp://localhost:5432'.A data reader for 'MusicWorld' on server 'tcp://localhost:5432' is being disposed after spending 75ms reading results.Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (95ms).Initialized DbCommand for 'ExecuteReader' (104ms).Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT b."Id", b."Name"
+FROM "Bands" AS bExecuted DbCommand (115ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT b."Id", b."Name"
+FROM "Bands" AS bClosing data reader to 'MusicWorld' on server 'tcp://localhost:5432'.A data reader for 'MusicWorld' on server 'tcp://localhost:5432' is being disposed after spending 108ms reading results.Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (0ms).Initialized DbCommand for 'ExecuteReader' (4ms).Executing DbCommand [Parameters=[@p0='?'], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Bands" ("Name")
+VALUES (@p0)
+RETURNING "Id";Executed DbCommand (77ms) [Parameters=[@p0='?'], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Bands" ("Name")
+VALUES (@p0)
+RETURNING "Id";Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (20ms).Initialized DbCommand for 'ExecuteReader' (31ms).Executing DbCommand [Parameters=[@p0='?'], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Bands" ("Name")
+VALUES (@p0)
+RETURNING "Id";Executed DbCommand (124ms) [Parameters=[@p0='?'], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Bands" ("Name")
+VALUES (@p0)
+RETURNING "Id";Closing data reader to 'MusicWorld' on server 'tcp://localhost:5432'.A data reader for 'MusicWorld' on server 'tcp://localhost:5432' is being disposed after spending 52ms reading results.Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (0ms).Initialized DbCommand for 'ExecuteReader' (0ms).Executing DbCommand [Parameters=[@p1='?' (DbType = Int32), @p2='?', @p3='?' (DbType = Int32), @p4='?' (DbType = Int32), @p5='?', @p6='?', @p7='?'], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Albums" ("BandId", "Name", "YearOfRelease")
+VALUES (@p1, @p2, @p3)
+RETURNING "Id";
+INSERT INTO "GroupMembers" ("BandId", "FirstName", "LastName", "Position")
+VALUES (@p4, @p5, @p6, @p7)
+RETURNING "Id";Executed DbCommand (20ms) [Parameters=[@p1='?' (DbType = Int32), @p2='?', @p3='?' (DbType = Int32), @p4='?' (DbType = Int32), @p5='?', @p6='?', @p7='?'], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Albums" ("BandId", "Name", "YearOfRelease")
+VALUES (@p1, @p2, @p3)
+RETURNING "Id";
+INSERT INTO "GroupMembers" ("BandId", "FirstName", "LastName", "Position")
+VALUES (@p4, @p5, @p6, @p7)
+RETURNING "Id";Closing data reader to 'MusicWorld' on server 'tcp://localhost:5432'.A data reader for 'MusicWorld' on server 'tcp://localhost:5432' is being disposed after spending 8ms reading results.Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (64ms).Initialized DbCommand for 'ExecuteReader' (72ms).Executing DbCommand [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT b."Id", b."Name"
+FROM "Bands" AS b
+WHERE b."Id" = @__p_0
+LIMIT 1Executed DbCommand (68ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT b."Id", b."Name"
+FROM "Bands" AS b
+WHERE b."Id" = @__p_0
+LIMIT 1Closing data reader to 'MusicWorld' on server 'tcp://localhost:5432'.A data reader for 'MusicWorld' on server 'tcp://localhost:5432' is being disposed after spending 81ms reading results.Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (0ms).Initialized DbCommand for 'ExecuteReader' (0ms).Executing DbCommand [Parameters=[@p0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+DELETE FROM "Bands"
+WHERE "Id" = @p0;Failed executing DbCommand (16,441ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+DELETE FROM "Bands"
+WHERE "Id" = @p0;Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (67ms).Initialized DbCommand for 'ExecuteReader' (79ms).Executing DbCommand [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT b."Id", b."Name"
+FROM "Bands" AS b
+WHERE b."Id" = @__p_0
+LIMIT 1Executed DbCommand (79ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT b."Id", b."Name"
+FROM "Bands" AS b
+WHERE b."Id" = @__p_0
+LIMIT 1Closing data reader to 'MusicWorld' on server 'tcp://localhost:5432'.A data reader for 'MusicWorld' on server 'tcp://localhost:5432' is being disposed after spending 15ms reading results.Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (73ms).Initialized DbCommand for 'ExecuteReader' (85ms).Executing DbCommand [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT b."Id", b."Name"
+FROM "Bands" AS b
+WHERE b."Id" = @__p_0
+LIMIT 1Executed DbCommand (64ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT b."Id", b."Name"
+FROM "Bands" AS b
+WHERE b."Id" = @__p_0
+LIMIT 1Closing data reader to 'MusicWorld' on server 'tcp://localhost:5432'.A data reader for 'MusicWorld' on server 'tcp://localhost:5432' is being disposed after spending 22ms reading results.Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (77ms).Initialized DbCommand for 'ExecuteReader' (83ms).Executing DbCommand [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT b."Id", b."Name"
+FROM "Bands" AS b
+WHERE b."Id" = @__p_0
+LIMIT 1Executed DbCommand (64ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT b."Id", b."Name"
+FROM "Bands" AS b
+WHERE b."Id" = @__p_0
+LIMIT 1Closing data reader to 'MusicWorld' on server 'tcp://localhost:5432'.A data reader for 'MusicWorld' on server 'tcp://localhost:5432' is being disposed after spending 59ms reading results.Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (0ms).Initialized DbCommand for 'ExecuteReader' (1ms).Executing DbCommand [Parameters=[@p0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+DELETE FROM "Bands"
+WHERE "Id" = @p0;Executed DbCommand (3,719ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+DELETE FROM "Bands"
+WHERE "Id" = @p0;Closing data reader to 'MusicWorld' on server 'tcp://localhost:5432'.A data reader for 'MusicWorld' on server 'tcp://localhost:5432' is being disposed after spending 17ms reading results.Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (192ms).Initialized DbCommand for 'ExecuteReader' (217ms).Executing DbCommand [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT b."Id", b."Name"
+FROM "Bands" AS b
+WHERE b."Id" = @__p_0
+LIMIT 1Executed DbCommand (256ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT b."Id", b."Name"
+FROM "Bands" AS b
+WHERE b."Id" = @__p_0
+LIMIT 1Closing data reader to 'MusicWorld' on server 'tcp://localhost:5432'.A data reader for 'MusicWorld' on server 'tcp://localhost:5432' is being disposed after spending 49ms reading results.Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (30ms).Initialized DbCommand for 'ExecuteReader' (63ms).Executing DbCommand [Parameters=[@p0='?'], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Bands" ("Name")
+VALUES (@p0)
+RETURNING "Id";Executed DbCommand (345ms) [Parameters=[@p0='?'], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Bands" ("Name")
+VALUES (@p0)
+RETURNING "Id";Closing data reader to 'MusicWorld' on server 'tcp://localhost:5432'.A data reader for 'MusicWorld' on server 'tcp://localhost:5432' is being disposed after spending 166ms reading results.Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (1ms).Initialized DbCommand for 'ExecuteReader' (2ms).Executing DbCommand [Parameters=[@p1='?' (DbType = Int32), @p2='?', @p3='?' (DbType = Int32), @p4='?' (DbType = Int32), @p5='?', @p6='?', @p7='?'], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Albums" ("BandId", "Name", "YearOfRelease")
+VALUES (@p1, @p2, @p3)
+RETURNING "Id";
+INSERT INTO "GroupMembers" ("BandId", "FirstName", "LastName", "Position")
+VALUES (@p4, @p5, @p6, @p7)
+RETURNING "Id";Executed DbCommand (44ms) [Parameters=[@p1='?' (DbType = Int32), @p2='?', @p3='?' (DbType = Int32), @p4='?' (DbType = Int32), @p5='?', @p6='?', @p7='?'], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Albums" ("BandId", "Name", "YearOfRelease")
+VALUES (@p1, @p2, @p3)
+RETURNING "Id";
+INSERT INTO "GroupMembers" ("BandId", "FirstName", "LastName", "Position")
+VALUES (@p4, @p5, @p6, @p7)
+RETURNING "Id";Closing data reader to 'MusicWorld' on server 'tcp://localhost:5432'.A data reader for 'MusicWorld' on server 'tcp://localhost:5432' is being disposed after spending 31ms reading results.Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (67ms).Initialized DbCommand for 'ExecuteReader' (75ms).Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT b."Id", b."Name"
+FROM "Bands" AS bExecuted DbCommand (54ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT b."Id", b."Name"
+FROM "Bands" AS bClosing data reader to 'MusicWorld' on server 'tcp://localhost:5432'.A data reader for 'MusicWorld' on server 'tcp://localhost:5432' is being disposed after spending 71ms reading results.Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (0ms).Initialized DbCommand for 'ExecuteReader' (4ms).Executing DbCommand [Parameters=[@p0='?'], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Bands" ("Name")
+VALUES (@p0)
+RETURNING "Id";Executed DbCommand (33ms) [Parameters=[@p0='?'], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Bands" ("Name")
+VALUES (@p0)
+RETURNING "Id";Closing data reader to 'MusicWorld' on server 'tcp://localhost:5432'.A data reader for 'MusicWorld' on server 'tcp://localhost:5432' is being disposed after spending 27ms reading results.Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (0ms).Initialized DbCommand for 'ExecuteReader' (0ms).Executing DbCommand [Parameters=[@p1='?' (DbType = Int32), @p2='?', @p3='?' (DbType = Int32), @p4='?' (DbType = Int32), @p5='?', @p6='?', @p7='?'], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Albums" ("BandId", "Name", "YearOfRelease")
+VALUES (@p1, @p2, @p3)
+RETURNING "Id";
+INSERT INTO "GroupMembers" ("BandId", "FirstName", "LastName", "Position")
+VALUES (@p4, @p5, @p6, @p7)
+RETURNING "Id";Executed DbCommand (14ms) [Parameters=[@p1='?' (DbType = Int32), @p2='?', @p3='?' (DbType = Int32), @p4='?' (DbType = Int32), @p5='?', @p6='?', @p7='?'], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Albums" ("BandId", "Name", "YearOfRelease")
+VALUES (@p1, @p2, @p3)
+RETURNING "Id";
+INSERT INTO "GroupMembers" ("BandId", "FirstName", "LastName", "Position")
+VALUES (@p4, @p5, @p6, @p7)
+RETURNING "Id";Closing data reader to 'MusicWorld' on server 'tcp://localhost:5432'.A data reader for 'MusicWorld' on server 'tcp://localhost:5432' is being disposed after spending 4171ms reading results.Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (85ms).Initialized DbCommand for 'ExecuteReader' (93ms).Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT b."Id", b."Name"
+FROM "Bands" AS bExecuted DbCommand (62ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT b."Id", b."Name"
+FROM "Bands" AS bClosing data reader to 'MusicWorld' on server 'tcp://localhost:5432'.A data reader for 'MusicWorld' on server 'tcp://localhost:5432' is being disposed after spending 74ms reading results.Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (0ms).Initialized DbCommand for 'ExecuteReader' (4ms).Executing DbCommand [Parameters=[@p0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+DELETE FROM "Bands"
+WHERE "Id" = @p0;Failed executing DbCommand (4,063ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+DELETE FROM "Bands"
+WHERE "Id" = @p0;Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (86ms).Initialized DbCommand for 'ExecuteReader' (96ms).Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT b."Id", b."Name"
+FROM "Bands" AS bExecuted DbCommand (56ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT b."Id", b."Name"
+FROM "Bands" AS bClosing data reader to 'MusicWorld' on server 'tcp://localhost:5432'.A data reader for 'MusicWorld' on server 'tcp://localhost:5432' is being disposed after spending 77ms reading results.Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (0ms).Initialized DbCommand for 'ExecuteReader' (3ms).Executing DbCommand [Parameters=[@p0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+DELETE FROM "Bands"
+WHERE "Id" = @p0;Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (73ms).Initialized DbCommand for 'ExecuteReader' (78ms).Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT b."Id", b."Name"
+FROM "Bands" AS bExecuted DbCommand (58ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT b."Id", b."Name"
+FROM "Bands" AS bClosing data reader to 'MusicWorld' on server 'tcp://localhost:5432'.A data reader for 'MusicWorld' on server 'tcp://localhost:5432' is being disposed after spending 92ms reading results.Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (0ms).Initialized DbCommand for 'ExecuteReader' (4ms).Executing DbCommand [Parameters=[@p0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+DELETE FROM "Bands"
+WHERE "Id" = @p0;Executed DbCommand (34ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+DELETE FROM "Bands"
+WHERE "Id" = @p0;Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (92ms).Initialized DbCommand for 'ExecuteReader' (98ms).Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT b."Id", b."Name"
+FROM "Bands" AS bExecuted DbCommand (72ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT b."Id", b."Name"
+FROM "Bands" AS bClosing data reader to 'MusicWorld' on server 'tcp://localhost:5432'.A data reader for 'MusicWorld' on server 'tcp://localhost:5432' is being disposed after spending 70ms reading results.Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (0ms).Initialized DbCommand for 'ExecuteReader' (3ms).Executing DbCommand [Parameters=[@p0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+DELETE FROM "Bands"
+WHERE "Id" = @p0;Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (65ms).Initialized DbCommand for 'ExecuteReader' (69ms).Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT b."Id", b."Name"
+FROM "Bands" AS bExecuted DbCommand (67ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT b."Id", b."Name"
+FROM "Bands" AS bClosing data reader to 'MusicWorld' on server 'tcp://localhost:5432'.A data reader for 'MusicWorld' on server 'tcp://localhost:5432' is being disposed after spending 85ms reading results.Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (63ms).Initialized DbCommand for 'ExecuteReader' (67ms).Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT b."Id", b."Name"
+FROM "Bands" AS bExecuted DbCommand (57ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT b."Id", b."Name"
+FROM "Bands" AS bClosing data reader to 'MusicWorld' on server 'tcp://localhost:5432'.A data reader for 'MusicWorld' on server 'tcp://localhost:5432' is being disposed after spending 66ms reading results.Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (75ms).Initialized DbCommand for 'ExecuteReader' (80ms).Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT b."Id", b."Name"
+FROM "Bands" AS bExecuted DbCommand (70ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT b."Id", b."Name"
+FROM "Bands" AS bClosing data reader to 'MusicWorld' on server 'tcp://localhost:5432'.A data reader for 'MusicWorld' on server 'tcp://localhost:5432' is being disposed after spending 79ms reading results.Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (0ms).Initialized DbCommand for 'ExecuteReader' (2ms).Executing DbCommand [Parameters=[@p0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+DELETE FROM "Bands"
+WHERE "Id" = @p0;Executed DbCommand (38ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+DELETE FROM "Bands"
+WHERE "Id" = @p0;Closing data reader to 'MusicWorld' on server 'tcp://localhost:5432'.A data reader for 'MusicWorld' on server 'tcp://localhost:5432' is being disposed after spending 3742ms reading results.Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (0ms).Initialized DbCommand for 'ExecuteReader' (1ms).Executing DbCommand [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT b."Id", b."Name"
+FROM "Bands" AS b
+WHERE b."Id" = @__p_0
+LIMIT 1Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT b."Id", b."Name"
+FROM "Bands" AS b
+WHERE b."Id" = @__p_0
+LIMIT 1Closing data reader to 'MusicWorld' on server 'tcp://localhost:5432'.A data reader for 'MusicWorld' on server 'tcp://localhost:5432' is being disposed after spending 0ms reading results.Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (0ms).Initialized DbCommand for 'ExecuteReader' (0ms).Executing DbCommand [Parameters=[@p0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+DELETE FROM "Bands"
+WHERE "Id" = @p0;Failed executing DbCommand (22ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+DELETE FROM "Bands"
+WHERE "Id" = @p0;Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (92ms).Initialized DbCommand for 'ExecuteReader' (97ms).Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT b."Id", b."Name"
+FROM "Bands" AS bExecuted DbCommand (55ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT b."Id", b."Name"
+FROM "Bands" AS bClosing data reader to 'MusicWorld' on server 'tcp://localhost:5432'.A data reader for 'MusicWorld' on server 'tcp://localhost:5432' is being disposed after spending 74ms reading results.Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (0ms).Initialized DbCommand for 'ExecuteReader' (2ms).Executing DbCommand [Parameters=[@p0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+DELETE FROM "Bands"
+WHERE "Id" = @p0;Failed executing DbCommand (18,845ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+DELETE FROM "Bands"
+WHERE "Id" = @p0;Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (1ms).Initialized DbCommand for 'ExecuteReader' (4ms).Executing DbCommand [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT b."Id", b."Name"
+FROM "Bands" AS b
+WHERE b."Id" = @__p_0
+LIMIT 1Executed DbCommand (4ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT b."Id", b."Name"
+FROM "Bands" AS b
+WHERE b."Id" = @__p_0
+LIMIT 1Closing data reader to 'MusicWorld' on server 'tcp://localhost:5432'.A data reader for 'MusicWorld' on server 'tcp://localhost:5432' is being disposed after spending 0ms reading results.Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (0ms).Initialized DbCommand for 'ExecuteReader' (0ms).Executing DbCommand [Parameters=[@p0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+DELETE FROM "Bands"
+WHERE "Id" = @p0;Failed executing DbCommand (4ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+DELETE FROM "Bands"
+WHERE "Id" = @p0;Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (66ms).Initialized DbCommand for 'ExecuteReader' (74ms).Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT b."Id", b."Name"
+FROM "Bands" AS bExecuted DbCommand (51ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT b."Id", b."Name"
+FROM "Bands" AS bClosing data reader to 'MusicWorld' on server 'tcp://localhost:5432'.A data reader for 'MusicWorld' on server 'tcp://localhost:5432' is being disposed after spending 64ms reading results.Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (0ms).Initialized DbCommand for 'ExecuteReader' (2ms).Executing DbCommand [Parameters=[@p0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+DELETE FROM "Bands"
+WHERE "Id" = @p0;Failed executing DbCommand (2,579ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+DELETE FROM "Bands"
+WHERE "Id" = @p0;Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (68ms).Initialized DbCommand for 'ExecuteReader' (72ms).Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT b."Id", b."Name"
+FROM "Bands" AS bExecuted DbCommand (55ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT b."Id", b."Name"
+FROM "Bands" AS bClosing data reader to 'MusicWorld' on server 'tcp://localhost:5432'.A data reader for 'MusicWorld' on server 'tcp://localhost:5432' is being disposed after spending 71ms reading results.Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (0ms).Initialized DbCommand for 'ExecuteReader' (4ms).Executing DbCommand [Parameters=[@p0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+DELETE FROM "Bands"
+WHERE "Id" = @p0;Executed DbCommand (43ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+DELETE FROM "Bands"
+WHERE "Id" = @p0;Closing data reader to 'MusicWorld' on server 'tcp://localhost:5432'.A data reader for 'MusicWorld' on server 'tcp://localhost:5432' is being disposed after spending 305ms reading results.Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (59ms).Initialized DbCommand for 'ExecuteReader' (63ms).Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT b."Id", b."Name"
+FROM "Bands" AS bExecuted DbCommand (61ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT b."Id", b."Name"
+FROM "Bands" AS bClosing data reader to 'MusicWorld' on server 'tcp://localhost:5432'.A data reader for 'MusicWorld' on server 'tcp://localhost:5432' is being disposed after spending 63ms reading results.Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (0ms).Initialized DbCommand for 'ExecuteReader' (2ms).Executing DbCommand [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT b."Id", b."Name"
+FROM "Bands" AS b
+WHERE b."Id" = @__p_0
+LIMIT 1Executed DbCommand (13ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT b."Id", b."Name"
+FROM "Bands" AS b
+WHERE b."Id" = @__p_0
+LIMIT 1Closing data reader to 'MusicWorld' on server 'tcp://localhost:5432'.A data reader for 'MusicWorld' on server 'tcp://localhost:5432' is being disposed after spending 0ms reading results.Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (58ms).Initialized DbCommand for 'ExecuteReader' (62ms).Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT b."Id", b."Name"
+FROM "Bands" AS bExecuted DbCommand (52ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT b."Id", b."Name"
+FROM "Bands" AS bClosing data reader to 'MusicWorld' on server 'tcp://localhost:5432'.A data reader for 'MusicWorld' on server 'tcp://localhost:5432' is being disposed after spending 71ms reading results.Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (0ms).Initialized DbCommand for 'ExecuteReader' (3ms).Executing DbCommand [Parameters=[@p0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+DELETE FROM "Bands"
+WHERE "Id" = @p0;Failed executing DbCommand (34ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+DELETE FROM "Bands"
+WHERE "Id" = @p0;Creating DbCommand for 'ExecuteScalar'.Created DbCommand for 'ExecuteScalar' (4ms).Initialized DbCommand for 'ExecuteScalar' (6ms).Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1 FROM pg_catalog.pg_class c
+    JOIN pg_catalog.pg_namespace n ON n.oid=c.relnamespace
+    WHERE n.nspname='public' AND
+          c.relname='__EFMigrationsHistory'
+)Executed DbCommand (54ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1 FROM pg_catalog.pg_class c
+    JOIN pg_catalog.pg_namespace n ON n.oid=c.relnamespace
+    WHERE n.nspname='public' AND
+          c.relname='__EFMigrationsHistory'
+)Creating DbCommand for 'ExecuteScalar'.Created DbCommand for 'ExecuteScalar' (0ms).Initialized DbCommand for 'ExecuteScalar' (0ms).Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1 FROM pg_catalog.pg_class c
+    JOIN pg_catalog.pg_namespace n ON n.oid=c.relnamespace
+    WHERE n.nspname='public' AND
+          c.relname='__EFMigrationsHistory'
+)Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1 FROM pg_catalog.pg_class c
+    JOIN pg_catalog.pg_namespace n ON n.oid=c.relnamespace
+    WHERE n.nspname='public' AND
+          c.relname='__EFMigrationsHistory'
+)Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (0ms).Initialized DbCommand for 'ExecuteReader' (0ms).Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";Closing data reader to 'MusicWorld' on server 'tcp://localhost:5432'.A data reader for 'MusicWorld' on server 'tcp://localhost:5432' is being disposed after spending 8ms reading results.Creating DbCommand for 'ExecuteNonQuery'.Created DbCommand for 'ExecuteNonQuery' (0ms).Initialized DbCommand for 'ExecuteNonQuery' (0ms).Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+UPDATE "Songs" SET "AlbumId" = 0 WHERE "AlbumId" IS NULL;
+ALTER TABLE "Songs" ALTER COLUMN "AlbumId" SET NOT NULL;
+ALTER TABLE "Songs" ALTER COLUMN "AlbumId" SET DEFAULT 0;Executed DbCommand (239ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+UPDATE "Songs" SET "AlbumId" = 0 WHERE "AlbumId" IS NULL;
+ALTER TABLE "Songs" ALTER COLUMN "AlbumId" SET NOT NULL;
+ALTER TABLE "Songs" ALTER COLUMN "AlbumId" SET DEFAULT 0;Creating DbCommand for 'ExecuteNonQuery'.Created DbCommand for 'ExecuteNonQuery' (0ms).Initialized DbCommand for 'ExecuteNonQuery' (0ms).Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+UPDATE "Albums" SET "BandId" = 0 WHERE "BandId" IS NULL;
+ALTER TABLE "Albums" ALTER COLUMN "BandId" SET NOT NULL;
+ALTER TABLE "Albums" ALTER COLUMN "BandId" SET DEFAULT 0;Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+UPDATE "Albums" SET "BandId" = 0 WHERE "BandId" IS NULL;
+ALTER TABLE "Albums" ALTER COLUMN "BandId" SET NOT NULL;
+ALTER TABLE "Albums" ALTER COLUMN "BandId" SET DEFAULT 0;Creating DbCommand for 'ExecuteNonQuery'.Created DbCommand for 'ExecuteNonQuery' (0ms).Initialized DbCommand for 'ExecuteNonQuery' (0ms).Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
+VALUES ('20231117090300_CascadeDelete', '7.0.11');Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
+VALUES ('20231117090300_CascadeDelete', '7.0.11');Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (57ms).Initialized DbCommand for 'ExecuteReader' (60ms).Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT b."Id", b."Name"
+FROM "Bands" AS bExecuted DbCommand (54ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT b."Id", b."Name"
+FROM "Bands" AS bClosing data reader to 'MusicWorld' on server 'tcp://localhost:5432'.A data reader for 'MusicWorld' on server 'tcp://localhost:5432' is being disposed after spending 63ms reading results.Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (0ms).Initialized DbCommand for 'ExecuteReader' (2ms).Executing DbCommand [Parameters=[@p0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+DELETE FROM "Bands"
+WHERE "Id" = @p0;Failed executing DbCommand (35ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+DELETE FROM "Bands"
+WHERE "Id" = @p0;Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (0ms).Initialized DbCommand for 'ExecuteReader' (1ms).Executing DbCommand [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT b."Id", b."Name"
+FROM "Bands" AS b
+WHERE b."Id" = @__p_0
+LIMIT 1Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT b."Id", b."Name"
+FROM "Bands" AS b
+WHERE b."Id" = @__p_0
+LIMIT 1Closing data reader to 'MusicWorld' on server 'tcp://localhost:5432'.A data reader for 'MusicWorld' on server 'tcp://localhost:5432' is being disposed after spending 0ms reading results.Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (0ms).Initialized DbCommand for 'ExecuteReader' (0ms).Executing DbCommand [Parameters=[@p0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+DELETE FROM "Bands"
+WHERE "Id" = @p0;Failed executing DbCommand (3ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+DELETE FROM "Bands"
+WHERE "Id" = @p0;Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (59ms).Initialized DbCommand for 'ExecuteReader' (67ms).Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT b."Id", b."Name"
+FROM "Bands" AS bExecuted DbCommand (52ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT b."Id", b."Name"
+FROM "Bands" AS bClosing data reader to 'MusicWorld' on server 'tcp://localhost:5432'.A data reader for 'MusicWorld' on server 'tcp://localhost:5432' is being disposed after spending 74ms reading results.Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (95ms).Initialized DbCommand for 'ExecuteReader' (100ms).Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT b."Id", b."Name"
+FROM "Bands" AS bExecuted DbCommand (92ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT b."Id", b."Name"
+FROM "Bands" AS bClosing data reader to 'MusicWorld' on server 'tcp://localhost:5432'.A data reader for 'MusicWorld' on server 'tcp://localhost:5432' is being disposed after spending 130ms reading results.Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (0ms).Initialized DbCommand for 'ExecuteReader' (3ms).Executing DbCommand [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."BandId", a."Name", a."YearOfRelease"
+FROM "Albums" AS a
+WHERE a."Id" = @__p_0
+LIMIT 1Executed DbCommand (19ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."BandId", a."Name", a."YearOfRelease"
+FROM "Albums" AS a
+WHERE a."Id" = @__p_0
+LIMIT 1Closing data reader to 'MusicWorld' on server 'tcp://localhost:5432'.A data reader for 'MusicWorld' on server 'tcp://localhost:5432' is being disposed after spending 17ms reading results.Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (0ms).Initialized DbCommand for 'ExecuteReader' (1ms).Executing DbCommand [Parameters=[@p0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+DELETE FROM "Albums"
+WHERE "Id" = @p0;Failed executing DbCommand (30ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+DELETE FROM "Albums"
+WHERE "Id" = @p0;Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (57ms).Initialized DbCommand for 'ExecuteReader' (60ms).Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT b."Id", b."Name"
+FROM "Bands" AS bExecuted DbCommand (51ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT b."Id", b."Name"
+FROM "Bands" AS bClosing data reader to 'MusicWorld' on server 'tcp://localhost:5432'.A data reader for 'MusicWorld' on server 'tcp://localhost:5432' is being disposed after spending 63ms reading results.Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (101ms).Initialized DbCommand for 'ExecuteReader' (108ms).Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT b."Id", b."Name"
+FROM "Bands" AS bExecuted DbCommand (93ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT b."Id", b."Name"
+FROM "Bands" AS bClosing data reader to 'MusicWorld' on server 'tcp://localhost:5432'.A data reader for 'MusicWorld' on server 'tcp://localhost:5432' is being disposed after spending 116ms reading results.Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (0ms).Initialized DbCommand for 'ExecuteReader' (3ms).Executing DbCommand [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT t."Id", t."Name", g."Id", g."BandId", g."FirstName", g."LastName", g."Position", t0."Id", t0."BandId", t0."Name", t0."YearOfRelease", t0."Id0", t0."AlbumId", t0."Name0", t0."SequenceNumber", t0."SongDuration"
+FROM (
+    SELECT b."Id", b."Name"
+    FROM "Bands" AS b
+    WHERE b."Id" = @__id_0
+    LIMIT 1
+) AS t
+LEFT JOIN "GroupMembers" AS g ON t."Id" = g."BandId"
+LEFT JOIN (
+    SELECT a."Id", a."BandId", a."Name", a."YearOfRelease", s."Id" AS "Id0", s."AlbumId", s."Name" AS "Name0", s."SequenceNumber", s."SongDuration"
+    FROM "Albums" AS a
+    LEFT JOIN "Songs" AS s ON a."Id" = s."AlbumId"
+) AS t0 ON t."Id" = t0."BandId"
+ORDER BY t."Id", g."Id", t0."Id"Executed DbCommand (17ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT t."Id", t."Name", g."Id", g."BandId", g."FirstName", g."LastName", g."Position", t0."Id", t0."BandId", t0."Name", t0."YearOfRelease", t0."Id0", t0."AlbumId", t0."Name0", t0."SequenceNumber", t0."SongDuration"
+FROM (
+    SELECT b."Id", b."Name"
+    FROM "Bands" AS b
+    WHERE b."Id" = @__id_0
+    LIMIT 1
+) AS t
+LEFT JOIN "GroupMembers" AS g ON t."Id" = g."BandId"
+LEFT JOIN (
+    SELECT a."Id", a."BandId", a."Name", a."YearOfRelease", s."Id" AS "Id0", s."AlbumId", s."Name" AS "Name0", s."SequenceNumber", s."SongDuration"
+    FROM "Albums" AS a
+    LEFT JOIN "Songs" AS s ON a."Id" = s."AlbumId"
+) AS t0 ON t."Id" = t0."BandId"
+ORDER BY t."Id", g."Id", t0."Id"Closing data reader to 'MusicWorld' on server 'tcp://localhost:5432'.A data reader for 'MusicWorld' on server 'tcp://localhost:5432' is being disposed after spending 49ms reading results.Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (2ms).Initialized DbCommand for 'ExecuteReader' (10ms).Executing DbCommand [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT t."Id", t."Name", g."Id", g."BandId", g."FirstName", g."LastName", g."Position", t0."Id", t0."BandId", t0."Name", t0."YearOfRelease", t0."Id0", t0."AlbumId", t0."Name0", t0."SequenceNumber", t0."SongDuration"
+FROM (
+    SELECT b."Id", b."Name"
+    FROM "Bands" AS b
+    WHERE b."Id" = @__id_0
+    LIMIT 1
+) AS t
+LEFT JOIN "GroupMembers" AS g ON t."Id" = g."BandId"
+LEFT JOIN (
+    SELECT a."Id", a."BandId", a."Name", a."YearOfRelease", s."Id" AS "Id0", s."AlbumId", s."Name" AS "Name0", s."SequenceNumber", s."SongDuration"
+    FROM "Albums" AS a
+    LEFT JOIN "Songs" AS s ON a."Id" = s."AlbumId"
+) AS t0 ON t."Id" = t0."BandId"
+ORDER BY t."Id", g."Id", t0."Id"Executed DbCommand (4ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT t."Id", t."Name", g."Id", g."BandId", g."FirstName", g."LastName", g."Position", t0."Id", t0."BandId", t0."Name", t0."YearOfRelease", t0."Id0", t0."AlbumId", t0."Name0", t0."SequenceNumber", t0."SongDuration"
+FROM (
+    SELECT b."Id", b."Name"
+    FROM "Bands" AS b
+    WHERE b."Id" = @__id_0
+    LIMIT 1
+) AS t
+LEFT JOIN "GroupMembers" AS g ON t."Id" = g."BandId"
+LEFT JOIN (
+    SELECT a."Id", a."BandId", a."Name", a."YearOfRelease", s."Id" AS "Id0", s."AlbumId", s."Name" AS "Name0", s."SequenceNumber", s."SongDuration"
+    FROM "Albums" AS a
+    LEFT JOIN "Songs" AS s ON a."Id" = s."AlbumId"
+) AS t0 ON t."Id" = t0."BandId"
+ORDER BY t."Id", g."Id", t0."Id"Closing data reader to 'MusicWorld' on server 'tcp://localhost:5432'.A data reader for 'MusicWorld' on server 'tcp://localhost:5432' is being disposed after spending 2ms reading results.Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (98ms).Initialized DbCommand for 'ExecuteReader' (107ms).Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT b."Id", b."Name"
+FROM "Bands" AS bExecuted DbCommand (68ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT b."Id", b."Name"
+FROM "Bands" AS bClosing data reader to 'MusicWorld' on server 'tcp://localhost:5432'.A data reader for 'MusicWorld' on server 'tcp://localhost:5432' is being disposed after spending 132ms reading results.Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (0ms).Initialized DbCommand for 'ExecuteReader' (4ms).Executing DbCommand [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT t."Id", t."Name", g."Id", g."BandId", g."FirstName", g."LastName", g."Position", t0."Id", t0."BandId", t0."Name", t0."YearOfRelease", t0."Id0", t0."AlbumId", t0."Name0", t0."SequenceNumber", t0."SongDuration"
+FROM (
+    SELECT b."Id", b."Name"
+    FROM "Bands" AS b
+    WHERE b."Id" = @__id_0
+    LIMIT 1
+) AS t
+LEFT JOIN "GroupMembers" AS g ON t."Id" = g."BandId"
+LEFT JOIN (
+    SELECT a."Id", a."BandId", a."Name", a."YearOfRelease", s."Id" AS "Id0", s."AlbumId", s."Name" AS "Name0", s."SequenceNumber", s."SongDuration"
+    FROM "Albums" AS a
+    LEFT JOIN "Songs" AS s ON a."Id" = s."AlbumId"
+) AS t0 ON t."Id" = t0."BandId"
+ORDER BY t."Id", g."Id", t0."Id"Executed DbCommand (38ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT t."Id", t."Name", g."Id", g."BandId", g."FirstName", g."LastName", g."Position", t0."Id", t0."BandId", t0."Name", t0."YearOfRelease", t0."Id0", t0."AlbumId", t0."Name0", t0."SequenceNumber", t0."SongDuration"
+FROM (
+    SELECT b."Id", b."Name"
+    FROM "Bands" AS b
+    WHERE b."Id" = @__id_0
+    LIMIT 1
+) AS t
+LEFT JOIN "GroupMembers" AS g ON t."Id" = g."BandId"
+LEFT JOIN (
+    SELECT a."Id", a."BandId", a."Name", a."YearOfRelease", s."Id" AS "Id0", s."AlbumId", s."Name" AS "Name0", s."SequenceNumber", s."SongDuration"
+    FROM "Albums" AS a
+    LEFT JOIN "Songs" AS s ON a."Id" = s."AlbumId"
+) AS t0 ON t."Id" = t0."BandId"
+ORDER BY t."Id", g."Id", t0."Id"Closing data reader to 'MusicWorld' on server 'tcp://localhost:5432'.A data reader for 'MusicWorld' on server 'tcp://localhost:5432' is being disposed after spending 123ms reading results.Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (0ms).Initialized DbCommand for 'ExecuteReader' (2ms).Executing DbCommand [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?' (DbType = Int32), @p5='?' (DbType = Int32), @p6='?' (DbType = Int32), @p7='?' (DbType = Int32), @p8='?' (DbType = Int32), @p9='?' (DbType = Int32), @p10='?' (DbType = Int32), @p11='?' (DbType = Int32), @p12='?' (DbType = Int32), @p13='?' (DbType = Int32), @p14='?' (DbType = Int32), @p15='?' (DbType = Int32), @p16='?' (DbType = Int32), @p17='?' (DbType = Int32), @p18='?' (DbType = Int32), @p19='?' (DbType = Int32), @p20='?' (DbType = Int32), @p21='?' (DbType = Int32), @p22='?' (DbType = Int32), @p23='?' (DbType = Int32), @p24='?' (DbType = Int32), @p25='?' (DbType = Int32), @p26='?' (DbType = Int32), @p27='?' (DbType = Int32), @p28='?' (DbType = Int32), @p29='?' (DbType = Int32), @p30='?' (DbType = Int32), @p31='?' (DbType = Int32), @p32='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+DELETE FROM "GroupMembers"
+WHERE "Id" = @p0;
+DELETE FROM "GroupMembers"
+WHERE "Id" = @p1;
+DELETE FROM "GroupMembers"
+WHERE "Id" = @p2;
+DELETE FROM "GroupMembers"
+WHERE "Id" = @p3;
+DELETE FROM "Songs"
+WHERE "Id" = @p4;
+DELETE FROM "Songs"
+WHERE "Id" = @p5;
+DELETE FROM "Songs"
+WHERE "Id" = @p6;
+DELETE FROM "Songs"
+WHERE "Id" = @p7;
+DELETE FROM "Songs"
+WHERE "Id" = @p8;
+DELETE FROM "Songs"
+WHERE "Id" = @p9;
+DELETE FROM "Songs"
+WHERE "Id" = @p10;
+DELETE FROM "Songs"
+WHERE "Id" = @p11;
+DELETE FROM "Songs"
+WHERE "Id" = @p12;
+DELETE FROM "Songs"
+WHERE "Id" = @p13;
+DELETE FROM "Songs"
+WHERE "Id" = @p14;
+DELETE FROM "Songs"
+WHERE "Id" = @p15;
+DELETE FROM "Songs"
+WHERE "Id" = @p16;
+DELETE FROM "Songs"
+WHERE "Id" = @p17;
+DELETE FROM "Songs"
+WHERE "Id" = @p18;
+DELETE FROM "Songs"
+WHERE "Id" = @p19;
+DELETE FROM "Songs"
+WHERE "Id" = @p20;
+DELETE FROM "Songs"
+WHERE "Id" = @p21;
+DELETE FROM "Songs"
+WHERE "Id" = @p22;
+DELETE FROM "Songs"
+WHERE "Id" = @p23;
+DELETE FROM "Songs"
+WHERE "Id" = @p24;
+DELETE FROM "Songs"
+WHERE "Id" = @p25;
+DELETE FROM "Songs"
+WHERE "Id" = @p26;
+DELETE FROM "Songs"
+WHERE "Id" = @p27;
+DELETE FROM "Songs"
+WHERE "Id" = @p28;
+DELETE FROM "Songs"
+WHERE "Id" = @p29;
+DELETE FROM "Albums"
+WHERE "Id" = @p30;
+DELETE FROM "Albums"
+WHERE "Id" = @p31;
+DELETE FROM "Bands"
+WHERE "Id" = @p32;Executed DbCommand (57ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?' (DbType = Int32), @p5='?' (DbType = Int32), @p6='?' (DbType = Int32), @p7='?' (DbType = Int32), @p8='?' (DbType = Int32), @p9='?' (DbType = Int32), @p10='?' (DbType = Int32), @p11='?' (DbType = Int32), @p12='?' (DbType = Int32), @p13='?' (DbType = Int32), @p14='?' (DbType = Int32), @p15='?' (DbType = Int32), @p16='?' (DbType = Int32), @p17='?' (DbType = Int32), @p18='?' (DbType = Int32), @p19='?' (DbType = Int32), @p20='?' (DbType = Int32), @p21='?' (DbType = Int32), @p22='?' (DbType = Int32), @p23='?' (DbType = Int32), @p24='?' (DbType = Int32), @p25='?' (DbType = Int32), @p26='?' (DbType = Int32), @p27='?' (DbType = Int32), @p28='?' (DbType = Int32), @p29='?' (DbType = Int32), @p30='?' (DbType = Int32), @p31='?' (DbType = Int32), @p32='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+DELETE FROM "GroupMembers"
+WHERE "Id" = @p0;
+DELETE FROM "GroupMembers"
+WHERE "Id" = @p1;
+DELETE FROM "GroupMembers"
+WHERE "Id" = @p2;
+DELETE FROM "GroupMembers"
+WHERE "Id" = @p3;
+DELETE FROM "Songs"
+WHERE "Id" = @p4;
+DELETE FROM "Songs"
+WHERE "Id" = @p5;
+DELETE FROM "Songs"
+WHERE "Id" = @p6;
+DELETE FROM "Songs"
+WHERE "Id" = @p7;
+DELETE FROM "Songs"
+WHERE "Id" = @p8;
+DELETE FROM "Songs"
+WHERE "Id" = @p9;
+DELETE FROM "Songs"
+WHERE "Id" = @p10;
+DELETE FROM "Songs"
+WHERE "Id" = @p11;
+DELETE FROM "Songs"
+WHERE "Id" = @p12;
+DELETE FROM "Songs"
+WHERE "Id" = @p13;
+DELETE FROM "Songs"
+WHERE "Id" = @p14;
+DELETE FROM "Songs"
+WHERE "Id" = @p15;
+DELETE FROM "Songs"
+WHERE "Id" = @p16;
+DELETE FROM "Songs"
+WHERE "Id" = @p17;
+DELETE FROM "Songs"
+WHERE "Id" = @p18;
+DELETE FROM "Songs"
+WHERE "Id" = @p19;
+DELETE FROM "Songs"
+WHERE "Id" = @p20;
+DELETE FROM "Songs"
+WHERE "Id" = @p21;
+DELETE FROM "Songs"
+WHERE "Id" = @p22;
+DELETE FROM "Songs"
+WHERE "Id" = @p23;
+DELETE FROM "Songs"
+WHERE "Id" = @p24;
+DELETE FROM "Songs"
+WHERE "Id" = @p25;
+DELETE FROM "Songs"
+WHERE "Id" = @p26;
+DELETE FROM "Songs"
+WHERE "Id" = @p27;
+DELETE FROM "Songs"
+WHERE "Id" = @p28;
+DELETE FROM "Songs"
+WHERE "Id" = @p29;
+DELETE FROM "Albums"
+WHERE "Id" = @p30;
+DELETE FROM "Albums"
+WHERE "Id" = @p31;
+DELETE FROM "Bands"
+WHERE "Id" = @p32;Closing data reader to 'MusicWorld' on server 'tcp://localhost:5432'.A data reader for 'MusicWorld' on server 'tcp://localhost:5432' is being disposed after spending 39ms reading results.

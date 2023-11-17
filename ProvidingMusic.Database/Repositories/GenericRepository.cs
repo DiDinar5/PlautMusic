@@ -34,8 +34,12 @@ namespace ProvidingMusic.Database.Repositories
         }
         public virtual async Task<bool> DeleteAsync(int? id)
         {
-            TEntity? entity = _dbSet.Find(id);
-            _dbSet.Remove(entity!);
+           var db =  (_dbContext.Bands
+                .Include(b => b.GroupMembers)
+                .Include(b => b.Albums)
+                .ThenInclude(a => a.ListSongs).FirstOrDefault(s=>s.Id==id));
+            TEntity entity = _dbSet.Find(db.Id);
+            _dbSet.Remove(entity);
             await SaveAsync();
             return true;    
 
