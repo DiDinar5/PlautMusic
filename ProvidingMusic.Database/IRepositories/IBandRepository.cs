@@ -10,5 +10,9 @@ namespace ProvidingMusic.Database.IRepositories
     {
         Task<Band?> GetAllInfo(int id);
         //Task<bool> DeleteAllInfo(int id);
+
+        Task<List<BandDTO?>> UpdateAllAsync(List<BandDTO?>band);
+
+        Task<BandDTO?> TestSetValues(BandDTO bandDTO);
     }
 }

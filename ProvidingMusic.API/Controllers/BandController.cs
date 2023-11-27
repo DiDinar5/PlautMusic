@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿    using Microsoft.AspNetCore.Mvc;
 using ProvidingMusic.BusinessLogic.Services.Intefaces;
 using ProvidingMusic.Database.DTO;
 using ProvidingMusic.Domain.Models;
@@ -67,5 +67,16 @@ namespace ProvidingMusic.API.Controllers
         //{
         //    return Ok(await _bandService.DeleteAllInfo(id));
         //}
+
+        [HttpPatch("updateAll")]
+        public async Task<IActionResult> UpdateAllBands([FromBody]List<BandDTO> bandsDTO)
+        {
+            return Ok(await _bandService.UpdateAllAsync(bandsDTO));
+        }
+        [HttpPatch("update")]
+        public async Task<IActionResult> UpdateBand([FromBody] BandDTO bandsDTO)
+        {
+            return Ok(await _bandService.TestSetValues(bandsDTO));
+        }
     }
 }

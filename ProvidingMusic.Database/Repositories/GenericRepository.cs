@@ -2,7 +2,6 @@
 using ProvidingMusic.Database.Context;
 using ProvidingMusic.Database.IRepositories;
 using ProvidingMusic.Domain.Models;
-using System.Linq;
 
 namespace ProvidingMusic.Database.Repositories
 {

@@ -46,20 +46,20 @@ builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
-var serviceProvider = builder.Services.BuildServiceProvider();
-var data = serviceProvider.GetService<ApplicationDBContext>();
+//var serviceProvider = builder.Services.BuildServiceProvider();
+//var data = serviceProvider.GetService<ApplicationDBContext>();
 
-var serviceBand = serviceProvider.GetServices<IBandService>().FirstOrDefault();
-var serviceGM = serviceProvider.GetServices<IGroupMemberService>().FirstOrDefault();
-var serviceAlbum = serviceProvider.GetServices<IAlbumService>().FirstOrDefault();
-var serviceSong = serviceProvider.GetServices<ISongService>().FirstOrDefault();
+//var serviceBand = serviceProvider.GetServices<IBandService>().FirstOrDefault();
+//var serviceGM = serviceProvider.GetServices<IGroupMemberService>().FirstOrDefault();
+//var serviceAlbum = serviceProvider.GetServices<IAlbumService>().FirstOrDefault();
+//var serviceSong = serviceProvider.GetServices<ISongService>().FirstOrDefault();
 
-DataInitializer dataInitializer = new DataInitializer(data,serviceBand,serviceGM,serviceAlbum,serviceSong);
-dataInitializer.SetData();
-  
+//DataInitializer dataInitializer = new DataInitializer(data, serviceBand, serviceGM, serviceAlbum, serviceSong);
+//dataInitializer.SetData();
+
 
 // Configure the HTTP request pipeline.
-    if (app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment())
     {
         app.UseSwagger();
         app.UseSwaggerUI();

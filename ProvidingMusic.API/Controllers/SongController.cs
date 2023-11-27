@@ -10,6 +10,7 @@ namespace ProvidingMusic.API.Controllers
     public class SongController : Controller
     {
         private readonly ISongService _songService;
+        private int SongCounter=0;
         public SongController(ISongService songService)
         {
             _songService = songService;

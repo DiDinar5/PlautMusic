@@ -18,6 +18,10 @@ namespace ProvidingMusic.Database.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            //modelBuilder.Entity<GroupMember>()
+            //    .HasKey(gr => new { gr.FirstName, gr.LastName });
+
+
             modelBuilder
                .Entity<Album>()
                .HasMany(a => a.ListSongs)
@@ -38,6 +42,7 @@ namespace ProvidingMusic.Database.Context
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            optionsBuilder.LogTo(Console.WriteLine);
             optionsBuilder.UseLoggerFactory(MyLoggerFactory);
         }
         public static readonly ILoggerFactory MyLoggerFactory = LoggerFactory.Create(builder =>

@@ -8,8 +8,8 @@ namespace ProvidingMusic.BusinessLogic.Services.AutoMapper
     {
         public BandToBandDTOMapper()
         {
-            CreateMap<Band,BandDTO>().ForMember(b=>b.Temp,
-                x => x.MapFrom(s =>$"band: {s.Name}"));
+            //CreateMap<Band,BandDTO>().ForMember(b=>b.Temp,
+            //    x => x.MapFrom(s =>$"band: {s.Name}"));
         }
     }
 }
