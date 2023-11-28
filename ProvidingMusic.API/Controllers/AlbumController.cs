@@ -9,9 +9,12 @@ namespace ProvidingMusic.API.Controllers
     public class AlbumController : Controller
     {
         private readonly IAlbumService _albumService;
-        public AlbumController(IAlbumService albumService)
+        private readonly IOperationCounterService _operationCounterService;
+        public AlbumController(IAlbumService albumService, IOperationCounterService operationCounterService)
         {
             _albumService = albumService;
+            _operationCounterService = operationCounterService;
+
         }
         [HttpGet]
         public async Task<IActionResult> GetAlbums()
@@ -54,6 +57,7 @@ namespace ProvidingMusic.API.Controllers
         [HttpPost("createAlbum")]
         public async Task<IActionResult> CreateAlbum(Album album)
         {
+            _operationCounterService.IncreaseAlbumOperationCounter();
             return Ok(await _albumService.CreateAsync(album));
         }
         [HttpPatch("updateAlbum")]

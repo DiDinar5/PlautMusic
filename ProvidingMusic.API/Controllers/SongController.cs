@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ProvidingMusic.BusinessLogic.Services;
 using ProvidingMusic.BusinessLogic.Services.Intefaces;
-using ProvidingMusic.Database.DTO;
 using ProvidingMusic.Domain.Models;
 
 namespace ProvidingMusic.API.Controllers
@@ -10,10 +10,11 @@ namespace ProvidingMusic.API.Controllers
     public class SongController : Controller
     {
         private readonly ISongService _songService;
-        private int SongCounter=0;
-        public SongController(ISongService songService)
+        private readonly IOperationCounterService _operationCounterService;
+        public SongController(ISongService songService, IOperationCounterService operationCounterService)
         {
             _songService = songService;
+            _operationCounterService = operationCounterService;
         }
         
         ///<summary>
@@ -78,13 +79,19 @@ namespace ProvidingMusic.API.Controllers
         [HttpPost("createSong")]
         public async Task<IActionResult> CreateSong(Song song)
         {
+            _operationCounterService.IncreaseSongOperationCounter();
             return Ok(await _songService.CreateAsync(song));
         }
+        
+
         [HttpPatch("updateSong")]
         public async Task<IActionResult> UpdateSong(Song song)
         {
+            //_operationCounterService.CounterChanged += ;
+            //_operationCounterService.IncreaseSongOperationCounter();
             return Ok(await _songService.UpdateAsync(song));
         }
+
         [HttpDelete("deleteSong")]
         public async Task<IActionResult> DeleteSong(int id)
         {

@@ -12,6 +12,9 @@ namespace ProvidingMusic.BusinessLogic.Services.Intefaces
 
         Task<List<BandDTO?>> UpdateAllAsync(List<BandDTO?> band);
         Task<BandDTO?> TestSetValues(BandDTO bandDTO);
+        Task<Band?> CreateTest(Band band);
+
+
 
     }
 }

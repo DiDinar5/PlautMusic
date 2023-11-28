@@ -1,7 +1,9 @@
 ﻿    using Microsoft.AspNetCore.Mvc;
+using ProvidingMusic.BusinessLogic.Services;
 using ProvidingMusic.BusinessLogic.Services.Intefaces;
 using ProvidingMusic.Database.DTO;
 using ProvidingMusic.Domain.Models;
+using System.Runtime.CompilerServices;
 
 namespace ProvidingMusic.API.Controllers
 {
@@ -10,9 +12,14 @@ namespace ProvidingMusic.API.Controllers
     public class BandController : Controller
     {
         private readonly IBandService _bandService;
-        public BandController(IBandService bandService)
+        private readonly IOperationCounterService _operationCounterService;
+        public BandController(IBandService bandService, IOperationCounterService operationCounterService)
         {
             _bandService = bandService;
+            _operationCounterService = operationCounterService;
+
+            //_bandCreated += _operationCounterService.OnBandCreated;//подписка
+            
         }
 
         ///<summary>
@@ -47,10 +54,19 @@ namespace ProvidingMusic.API.Controllers
         {
             return Ok(await _bandService.GetRandomAsync());
         }
+
+        //delegate void BandCreatedHandler();
+        //event BandCreatedHandler _bandCreated;
+       
         [HttpPost("createBand")]
         public async Task<IActionResult> CreateBand(Band groupMusic)
         {
-            return Ok(await _bandService.CreateAsync(groupMusic));
+            //OperationCounterService service = new OperationCounterService();
+            //service.Counter += Band_Counter;
+           // _bandCreated?.Invoke();
+            //_operationCounterService.IncreaseBandOperationCounter();
+            
+            return Ok(await _bandService.CreateTest(groupMusic));
         }
         [HttpPatch("updateBand")]
         public async Task<IActionResult> UpdateBand(Band groupMusic)

@@ -41,6 +41,9 @@ builder.Services.AddScoped<IGroupMemberService, GroupMemberService>();
 builder.Services.AddScoped(typeof(IGenericService<>), typeof(GenericService<>));
 builder.Services.AddScoped(typeof(IGenericRandomService<>), typeof(GenericRandomService<>));
 builder.Services.AddScoped(typeof(IGenericSearchByNameService<>), typeof(GenericSearchByNameService<>));
+
+builder.Services.AddSingleton<IOperationCounterService, OperationCounterService>();
+
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddControllersWithViews();
 

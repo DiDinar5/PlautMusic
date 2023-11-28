@@ -13,12 +13,13 @@ namespace ProvidingMusic.API.Controllers
     public class GroupMemberController : Controller
     {
         private readonly IGroupMemberService _IgroupMemberService;
-     //   private readonly GroupMemberService _groupMemberService;
+        private readonly IOperationCounterService _operationCounterService;
 
-        public GroupMemberController(IGroupMemberService IgroupMemberService)
+        public GroupMemberController(IGroupMemberService IgroupMemberService, IOperationCounterService operationCounterService)
         {
             _IgroupMemberService = IgroupMemberService;
-            //_groupMemberService = groupMemberService;
+            _operationCounterService = operationCounterService;
+
         }
         [HttpGet]
         public async Task<IActionResult> GetGroupMembers()
@@ -48,6 +49,7 @@ namespace ProvidingMusic.API.Controllers
         [HttpPost("createGroupMember")]
         public async Task<IActionResult> CreateGroupMember(GroupMember groupMember)
         {
+            _operationCounterService.IncreaseGroupMemberOperationCounter();
             return Ok(await _IgroupMemberService.CreateAsync(groupMember));
         }
         [HttpPatch("updateGroupMember")]
