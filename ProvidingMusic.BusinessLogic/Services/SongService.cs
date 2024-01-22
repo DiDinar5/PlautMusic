@@ -48,21 +48,8 @@ namespace ProvidingMusic.BusinessLogic.Services
         {
             return await _searchByName.GetByNameAsync(name);
         }
-
-        //public async Task<IEnumerable<SongDTO>> GetLongSongs(string nameAlbum)
-        //{
-        //    // Создание конфигурации сопоставления
-        //    var config = new MapperConfiguration(cfg => cfg.CreateMap<List<Song>, List<SongDTO>>());
-        //    // Настройка AutoMapper
-        //    var mapper = new Mapper(config);
-        //    // сопоставление
-        //    var users = mapper.Map<List<SongDTO>>(_songRepository.GetBestSongsFromAlbums(nameAlbum));
-        //    return users;
-        //}
-
         public async Task<Song> GetRandomAsync()
         {
-
             return await _genericRandomBLL.GetRandomAsync();
         }
 

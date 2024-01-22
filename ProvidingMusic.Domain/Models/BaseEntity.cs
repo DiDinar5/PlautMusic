@@ -1,6 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-
-namespace ProvidingMusic.Domain.Models
+﻿namespace ProvidingMusic.Domain.Models
 {
     public class BaseEntity 
     {

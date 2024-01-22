@@ -20,7 +20,7 @@ namespace ProvidingMusic.Database.Repositories
         }
         public async Task<Album?> GetRandomAsync()
         {
-            return await _genericRandomRepository.GetRandomAsync(); //не все альбомы попадают в рандом
+            return await _genericRandomRepository.GetRandomAsync(); 
         }
         public async Task<Album> GetByNameAsync(string name)
         {
@@ -28,7 +28,6 @@ namespace ProvidingMusic.Database.Repositories
         }
         public async Task<IEnumerable<GetAlbumInfoResponseDTO>> GetAlbum(string bandName)
         {
-
             var albumsInfo = await _dbContext.Bands
                 .Include(b => b.Albums)
                 .ThenInclude(a => a.ListSongs)

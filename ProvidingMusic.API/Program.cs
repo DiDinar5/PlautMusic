@@ -1,12 +1,9 @@
 using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json;
-using ProvidingMusic.BusinessLogic;
 using ProvidingMusic.BusinessLogic.Services;
 using ProvidingMusic.BusinessLogic.Services.Intefaces;
 using ProvidingMusic.Database.Context;
 using ProvidingMusic.Database.IRepositories;
 using ProvidingMusic.Database.Repositories;
-using ProvidingMusic.Domain.Models;
 
 
 var builder = WebApplication.CreateBuilder(args);

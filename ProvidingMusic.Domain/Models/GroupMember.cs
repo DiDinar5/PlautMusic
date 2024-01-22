@@ -1,6 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.Diagnostics.CodeAnalysis;
-using System.Xml.Linq;
 
 namespace ProvidingMusic.Domain.Models
 {

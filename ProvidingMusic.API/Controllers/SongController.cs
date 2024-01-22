@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ProvidingMusic.BusinessLogic.Services;
 using ProvidingMusic.BusinessLogic.Services.Intefaces;
 using ProvidingMusic.Domain.Models;
 
@@ -29,6 +28,11 @@ namespace ProvidingMusic.API.Controllers
             }
             return Ok(await _songService.GetAllAsync());
         }
+        /// <summary>
+        /// Метод принимает на вход наименование песни, и возвращает песню или похожее наименование в случае ошибки ввода
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns>Возвращает код(200,400,500) и выбранную песню</returns>
         [HttpGet("getSongByName")]
         public async Task<IActionResult> GetSongByName(string name)
         {
@@ -42,11 +46,7 @@ namespace ProvidingMusic.API.Controllers
         {
             return Ok(await _songService.GetRandomAsync());
         }
-        //[HttpGet("getLongSongs")]
-        //public async Task<IActionResult> GetLongSong(string nameAlbum)
-        //{
-        //    return Ok(await _songService.GetLongSongs(nameAlbum));
-        //}
+       
         [HttpGet("getBestSongs")]
         public async Task<IActionResult> GetBestSongs(string bandName)
         {
@@ -63,19 +63,6 @@ namespace ProvidingMusic.API.Controllers
             return Ok(_songService.GetString(id));
         }
 
-        /// <summary>
-        /// Метод принимает на вход наименование песни, и возвращает песню или похожее наименование в случае ошибки ввода
-        /// </summary>
-        /// <param name="name"></param>
-        /// <returns>Возвращает код(200,400,500) и выбранную песню</returns>
-        //[HttpGet("{id}")]
-        //public async Task<IActionResult> GetSong(int id)
-        //{
-        //    //if(string.IsNullOrEmpty(id))
-        //    //    return BadRequest(new {Message = "name of song is null"});
-        //    //EFfunctionsLike
-        //    return Ok(await _songBLL.GetByIdConnectionAsync(id));
-        //}
         [HttpPost("createSong")]
         public async Task<IActionResult> CreateSong(Song song)
         {
@@ -87,8 +74,6 @@ namespace ProvidingMusic.API.Controllers
         [HttpPatch("updateSong")]
         public async Task<IActionResult> UpdateSong(Song song)
         {
-            //_operationCounterService.CounterChanged += ;
-            //_operationCounterService.IncreaseSongOperationCounter();
             return Ok(await _songService.UpdateAsync(song));
         }
 

@@ -44,11 +44,7 @@ namespace ProvidingMusic.API.Controllers
         {
             return Ok(await _albumService.GetByNameAsync(name));
         }
-        //[HttpGet("{id}")]
-        //public async Task<IActionResult> GetAlbum(int id)
-        //{
-        //    return Ok(await _albumBLL.GetByIdConnectionAsync(id));
-        //}
+
         [HttpGet("getAlbumRandom")]
         public async Task<IActionResult> GetRandomAlbum()
         {

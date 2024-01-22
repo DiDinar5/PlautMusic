@@ -1,9 +1,7 @@
-﻿    using Microsoft.AspNetCore.Mvc;
-using ProvidingMusic.BusinessLogic.Services;
+﻿using Microsoft.AspNetCore.Mvc;
 using ProvidingMusic.BusinessLogic.Services.Intefaces;
 using ProvidingMusic.Database.DTO;
 using ProvidingMusic.Domain.Models;
-using System.Runtime.CompilerServices;
 
 namespace ProvidingMusic.API.Controllers
 {
@@ -61,11 +59,9 @@ namespace ProvidingMusic.API.Controllers
         [HttpPost("createBand")]
         public async Task<IActionResult> CreateBand(Band groupMusic)
         {
-            //OperationCounterService service = new OperationCounterService();
-            //service.Counter += Band_Counter;
-           // _bandCreated?.Invoke();
+            // _bandCreated?.Invoke();
             //_operationCounterService.IncreaseBandOperationCounter();
-            
+
             return Ok(await _bandService.CreateTest(groupMusic));
         }
         [HttpPatch("updateBand")]
@@ -78,21 +74,11 @@ namespace ProvidingMusic.API.Controllers
         {
             return Ok(await _bandService.DeleteAsync(id));
         }
-        //[HttpDelete("deleteAllInfo")]
-        //public async Task<IActionResult> DeleteAllInfo(int id)
-        //{
-        //    return Ok(await _bandService.DeleteAllInfo(id));
-        //}
 
         [HttpPatch("updateAll")]
         public async Task<IActionResult> UpdateAllBands([FromBody]List<BandDTO> bandsDTO)
         {
             return Ok(await _bandService.UpdateAllAsync(bandsDTO));
-        }
-        [HttpPatch("update")]
-        public async Task<IActionResult> UpdateBand([FromBody] BandDTO bandsDTO)
-        {
-            return Ok(await _bandService.TestSetValues(bandsDTO));
         }
     }
 }

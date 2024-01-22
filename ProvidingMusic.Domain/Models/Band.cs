@@ -19,7 +19,7 @@ namespace ProvidingMusic.Domain.Models
             Band band = (Band)other;
             return (band.Name == Name &&
                 band.GroupMembers == GroupMembers &&
-                band.Albums==Albums);//???
+                band.Albums==Albums);//???сравнение сущностей в листе
         }
 
         public override int GetHashCode()

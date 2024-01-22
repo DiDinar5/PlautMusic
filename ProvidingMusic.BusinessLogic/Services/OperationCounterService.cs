@@ -1,5 +1,4 @@
 ﻿using ProvidingMusic.BusinessLogic.Services.Intefaces;
-using static ProvidingMusic.BusinessLogic.Services.Intefaces.IOperationCounterService;
 
 namespace ProvidingMusic.BusinessLogic.Services
 {
@@ -11,18 +10,6 @@ namespace ProvidingMusic.BusinessLogic.Services
         private int songOperationCounter = 0;
 
         public event EventHandler? Counter;
-        //event Counter? CounterChangedHandler
-        //{
-        //    add
-        //    {
-        //        CounterChanged += value;
-        //    }
-        //    remove
-        //    {
-        //        CounterChanged -= value;
-        //    }
-        //}
-
         public void IncreaseAlbumOperationCounter()
         {
             albumOperationCounter++;
@@ -54,55 +41,5 @@ namespace ProvidingMusic.BusinessLogic.Services
                 songOperationCounter
             };
         }
-        //public void Invoke()
-        //{
-        //    Counter.Invoke();
-        //}
-
-        //public event Counter? CounterChanged;
-
-        //event Counter? CounterChangedHandler
-        //{
-        //    add
-        //    {
-        //        CounterChanged+= value;
-        //    }
-        //    remove
-        //    {
-        //        CounterChanged -= value;
-        //    }
-        //}
-
-        //public void IncreaseSongOperationCounter()
-        //{
-        //    songOperationCounter++;
-        //    Invoke();
-        //}
-        ////public void IncreaseBandOperationCounter()
-        ////{
-        ////    bandOperationCounter++;
-        ////    //Invoke();
-        ////}
-        //public void OnBandCreated()
-        //{
-        //    bandOperationCounter++;
-        //    Invoke();   
-        //}
-
-        //public void IncreaseGroupMemberOperationCounter()
-        //{
-        //    groupMemberOperationCounter++;
-        //}
-        //public void IncreaseAlbumOperationCounter()
-        //{
-        //    albumOperationCounter++;
-        //}
-
-
-
-        //public void IncreaseBandOperationCounter()
-        //{
-
-        //}
     }
 }

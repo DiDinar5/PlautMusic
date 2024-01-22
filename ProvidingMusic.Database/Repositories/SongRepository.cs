@@ -27,20 +27,6 @@ namespace ProvidingMusic.Database.Repositories
             return await _genericSearchByNameRepository.GetByNameAsync(name);
         }
 
-        public async Task<IEnumerable<Song>> GetLongSongs(string nameAlbum)
-        {
-            var songs = (await _dbContext.Albums
-                .Include(s => s.ListSongs)
-                .Select(s => new
-                {
-                    s.ListSongs,
-                    s.Name
-                })
-                .FirstOrDefaultAsync(x => EF.Functions.Like(x.Name.ToLower(), $"%{nameAlbum}%")))?.ListSongs;
-
-            return songs;
-        }
-
         public async Task<IEnumerable<Song>>? GetBestSongsFromAlbums(string bandName)
         {
             var bandEntity = await _dbContext.Bands

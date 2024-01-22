@@ -1,10 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
-using ProvidingMusic.BusinessLogic.Services;
 using ProvidingMusic.BusinessLogic.Services.Intefaces;
-using ProvidingMusic.Database.Repositories;
 using ProvidingMusic.Domain.Models;
-using System.Globalization;
 
 namespace ProvidingMusic.API.Controllers
 {
@@ -41,11 +37,7 @@ namespace ProvidingMusic.API.Controllers
         {
             return Ok(await _IgroupMemberService.GetRandomAsync());
         }
-        //[HttpGet("{id}")]
-        //public async Task<IActionResult> GetGroupMember(int id)
-        //{
-        //    return Ok(await _IgroupMemberBLL.GetByIdConnectionAsync(id));
-        //}
+      
         [HttpPost("createGroupMember")]
         public async Task<IActionResult> CreateGroupMember(GroupMember groupMember)
         {

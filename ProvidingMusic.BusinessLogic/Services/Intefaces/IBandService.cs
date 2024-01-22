@@ -11,7 +11,6 @@ namespace ProvidingMusic.BusinessLogic.Services.Intefaces
         //Task<bool> DeleteAllInfo(int id);
 
         Task<List<BandDTO?>> UpdateAllAsync(List<BandDTO?> band);
-        Task<BandDTO?> TestSetValues(BandDTO bandDTO);
         Task<Band?> CreateTest(Band band);
 
 

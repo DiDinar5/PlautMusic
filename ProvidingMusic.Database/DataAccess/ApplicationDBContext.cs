@@ -18,11 +18,7 @@ namespace ProvidingMusic.Database.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //modelBuilder.Entity<GroupMember>()
-            //    .HasKey(gr => new { gr.FirstName, gr.LastName });
-
-
-            modelBuilder
+           modelBuilder
                .Entity<Album>()
                .HasMany(a => a.ListSongs)
                .WithOne()
