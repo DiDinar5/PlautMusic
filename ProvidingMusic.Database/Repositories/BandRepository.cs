@@ -18,7 +18,7 @@ namespace ProvidingMusic.Database.Repositories
             _genericSearchByNameRepository = genericSearchByNameRepository;
             }
 
-        public async Task<BandDTO?> GetAllInfo(int id)
+        public async Task<Band?> GetAllInfo(int id)
         {
             var bandEntity = await _dbContext.Bands
                 .Include(band => band.Albums)
@@ -30,41 +30,41 @@ namespace ProvidingMusic.Database.Repositories
                 return null;
 
             //  var map = _mapper.Map<BandDTO?>(bandEntity);
-            var bandEntityDTO = new BandDTO()
-            {
-                Id = bandEntity.Id,
-                Name = bandEntity.Name,
-                ListAlbums = bandEntity.Albums.Select(alb => new AlbumDTO()
-                {
-                    Id = alb.Id,
-                    Name = alb.Name,
-                    YearOfRelease = alb.YearOfRelease,
-                    ListSongs = alb.ListSongs.Select(song => new SongDTO()
-                    {
-                        Id = song.Id,
-                        Name = song.Name,
-                        SequenceNumber = song.SequenceNumber,
-                        SongDuration = song.SongDuration
-                    })
-                    .OrderBy(x => x.SequenceNumber)
-                    .ToList(),
-                    AlbumDuration = alb.ListSongs.Sum(song => song.SongDuration)
-                })
-                .OrderBy(albYear => albYear.YearOfRelease)
-                .ToList(),
-                ListGroupMembers = bandEntity.GroupMembers.Select(member => new GroupMemberDTO()
-                {
-                    Id = member.Id,
-                    FirstName = member.FirstName,
-                    LastName = member.LastName,
-                    Position = member.Position
-                })
-                .OrderBy(ml => ml.LastName)
-                .ThenBy(mf => mf.FirstName)
-                .ToList()
-            };
+            //var bandEntityDTO = new BandDTO()
+            //{
+            //    Id = bandEntity.Id,
+            //    Name = bandEntity.Name,
+            //    ListAlbums = bandEntity.Albums.Select(alb => new AlbumDTO()
+            //    {
+            //        Id = alb.Id,
+            //        Name = alb.Name,
+            //        YearOfRelease = alb.YearOfRelease,
+            //        ListSongs = alb.ListSongs.Select(song => new SongDTO()
+            //        {
+            //            Id = song.Id,
+            //            Name = song.Name,
+            //            SequenceNumber = song.SequenceNumber,
+            //            SongDuration = song.SongDuration
+            //        })
+            //        .OrderBy(x => x.SequenceNumber)
+            //        .ToList(),
+            //        AlbumDuration = alb.ListSongs.Sum(song => song.SongDuration)
+            //    })
+            //    .OrderBy(albYear => albYear.YearOfRelease)
+            //    .ToList(),
+            //    ListGroupMembers = bandEntity.GroupMembers.Select(member => new GroupMemberDTO()
+            //    {
+            //        Id = member.Id,
+            //        FirstName = member.FirstName,
+            //        LastName = member.LastName,
+            //        Position = member.Position
+            //    })
+            //    .OrderBy(ml => ml.LastName)
+            //    .ThenBy(mf => mf.FirstName)
+            //    .ToList()
+            //};
 
-            return bandEntityDTO;
+            return bandEntity;
         }
 
         public async Task<Band?> GetRandomAsync()

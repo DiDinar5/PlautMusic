@@ -38,6 +38,8 @@ namespace ProvidingMusic.BusinessLogic.Services
         {
 
             var bandInfo = await _bandRepository.GetAllInfo(id);
+            var bandDTO = _mapper.Map<BandDTO>(bandInfo);
+
             //var bandInfoDTO = _mapper.Map<BandDTO>(bandInfo);
             //var bandEntityDTO = new BandDTO()
             //{
@@ -72,7 +74,7 @@ namespace ProvidingMusic.BusinessLogic.Services
             //    .ThenBy(mf => mf.FirstName)
             //    .ToList()
             //};
-            return bandInfo;
+            return bandDTO;
         }
 
         public async Task<List<BandDTO?>> UpdateAllAsync(List<BandDTO?> bands)

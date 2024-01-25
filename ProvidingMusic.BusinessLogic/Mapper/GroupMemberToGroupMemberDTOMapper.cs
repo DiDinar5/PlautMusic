@@ -2,7 +2,7 @@
 using ProvidingMusic.Database.DTO;
 using ProvidingMusic.Domain.Models;
 
-namespace ProvidingMusic.BusinessLogic.Services.AutoMapper
+namespace ProvidingMusic.BusinessLogic.AutoMapper
 {
     public class GroupMemberToGroupMemberDTOMapper : Profile
     {
